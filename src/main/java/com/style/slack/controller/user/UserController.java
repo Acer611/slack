@@ -21,12 +21,24 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    /**
+     * 添加用户信息
+     * @param user
+     * @return
+     */
+
     @ResponseBody
     @PostMapping("/add")
     public int addUser(User user){
         return userService.addUser(user);
     }
 
+    /**
+     * 获取所有用户的信息
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @ResponseBody
     @GetMapping("/all")
     public Object findAllUser(
