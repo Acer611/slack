@@ -1,9 +1,9 @@
 package com.style.slack.dao.user;
 
 import com.style.slack.model.po.User;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.StatementType;
+
 import java.util.List;
 
 /**
@@ -34,6 +34,9 @@ public interface UserDao  {
      * @param userInfo
      * @return
      */
+    @Insert("insert into users(id,name,password) " +
+            "values(#{id},#{userName},#{password})" )
+    @SelectKey(before=false,keyProperty="id",resultType=String.class,statementType= StatementType.STATEMENT,statement="SELECT LAST_INSERT_ID() AS id")
     int insert(User userInfo);
 
 

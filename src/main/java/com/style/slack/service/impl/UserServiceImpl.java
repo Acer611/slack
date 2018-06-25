@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 用户service层实现类
@@ -25,7 +26,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public int addUser(User user) {
-
+        user.setId(UUID.randomUUID().toString());
         return userDao.insert(user);
     }
 

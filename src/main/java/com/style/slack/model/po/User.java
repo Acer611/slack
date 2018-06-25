@@ -1,16 +1,26 @@
 package com.style.slack.model.po;
 
+import io.swagger.annotations.ApiModelProperty;
+import org.springframework.data.annotation.Id;
+
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 /**
  * 用户实体信息
  * Created by Gaofei on 2018/6/11.
  */
+
+
 public class User implements Serializable {
 
+    @Id
+    @ApiModelProperty(hidden=true)
     private String id ;
+
+    @ApiModelProperty(value = "用户名称", required=true)
     private String userName;
+
+    @ApiModelProperty(value = "用户密码", required=true)
     private String password;
    /* private String phone;
     private Timestamp createTime;

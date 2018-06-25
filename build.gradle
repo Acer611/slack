@@ -36,5 +36,10 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile group: 'com.zaxxer', name: 'HikariCP', version: '3.1.0'
     compile group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.2.5'
+    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
 
 }
