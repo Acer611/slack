@@ -5,8 +5,7 @@ import com.style.slack.model.po.User;
 import com.style.slack.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,12 +19,21 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    IUserService userService;
+    private IUserService userService;
 
     @ResponseBody
-    @RequestMapping("/list")
-    public List<User> getUserList(){
-        List<User> userList = userService.queryUser();
-        return userList;
+    @PostMapping("/add")
+    public int addUser(User user){
+        return userService.addUser(user);
+    }
+
+    @ResponseBody
+    @GetMapping("/all")
+    public Object findAllUser(
+            @RequestParam(name = "pageNum", required = false, defaultValue = "1")
+                    int pageNum,
+            @RequestParam(name = "pageSize", required = false, defaultValue = "10")
+                    int pageSize){
+        return userService.findAllUser(pageNum,pageSize);
     }
 }

@@ -1,6 +1,7 @@
 package com.style.slack.service;
 
 
+import com.github.pagehelper.PageInfo;
 import com.style.slack.model.po.User;
 
 import java.util.List;
@@ -13,8 +14,15 @@ public interface IUserService {
 
 
     /**
+     *
+     * @param user
+     * @return
+     */
+    int addUser(User user);
+
+    /**
      * 获取所有用户信息
      * @return
      */
-    public List<User> queryUser();
+    PageInfo<User> findAllUser(int pageNum, int pageSize);
 }

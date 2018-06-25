@@ -1,11 +1,9 @@
-package com.style.slack.dao;
+package com.style.slack.dao.user;
 
 import com.style.slack.model.po.User;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
-
 import java.util.List;
 
 /**
@@ -13,8 +11,9 @@ import java.util.List;
  *  Created by Gaofei on 2018/6/11.
  */
 
-@Mapper
-public interface UserDao {
+
+public interface UserDao  {
+
 
     /**
      * 查询所有用户信息
@@ -27,5 +26,16 @@ public interface UserDao {
             @Result(property="userName",column="name"),
             @Result(property="password",column="password")
     })
-    public List<User> list();
+    public List<User> selectUsers();
+
+
+    /**
+     * 添加用户信息
+     * @param userInfo
+     * @return
+     */
+    int insert(User userInfo);
+
+
+
 }
