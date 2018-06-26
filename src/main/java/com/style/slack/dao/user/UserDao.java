@@ -48,12 +48,12 @@ public interface UserDao  {
             "values(#{id},#{userName},#{password},#{nickName},#{age},#{sex},#{phone},#{email},#{headImage}," +
             "#{delFlag},#{createTime},#{updateTime})" )
     @SelectKey(before=false,keyProperty="id",resultType=String.class,statementType= StatementType.STATEMENT,statement="SELECT LAST_INSERT_ID() AS id")
-    int insert(User userInfo);
+    public int insert(User userInfo);
 
 
 
     /**
-     * 根据用户名牧户查询用户信息
+     * 根据用户名模糊查询用户信息
      * @param name
      * @return
      */
@@ -72,5 +72,51 @@ public interface UserDao  {
             @Result(property="updateTime",column="update_time"),
             @Result(property="delFlag",column="del_flag")
     })
-    List<User> findUserByName(String name);
+    public List<User> findUserByName(String name);
+
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     */
+    @SelectProvider(type=UserSQLProvider.class, method="updateUserByIdSQL")
+    @Results(value ={
+            @Result(id=true, property="id",column="id"),
+            @Result(property="userName",column="user_name"),
+            @Result(property="password",column="PASSWORD"),
+            @Result(property="nickName",column="nick_name"),
+            @Result(property="age",column="age"),
+            @Result(property="sex",column="sex"),
+            @Result(property="phone",column="phone"),
+            @Result(property="email",column="email"),
+            @Result(property="headImage",column="head_image"),
+            @Result(property="createTime",column="create_time"),
+            @Result(property="updateTime",column="update_time"),
+            @Result(property="delFlag",column="del_flag")
+    })
+    public User updateUser(User user);
+
+
+    /**
+     * 根据ID获取用户信息
+     * @param id
+     * @return
+     */
+
+    @SelectProvider(type=UserSQLProvider.class, method="selectUserById")
+    @Results(value ={
+            @Result(id=true, property="id",column="id"),
+            @Result(property="userName",column="user_name"),
+            @Result(property="password",column="PASSWORD"),
+            @Result(property="nickName",column="nick_name"),
+            @Result(property="age",column="age"),
+            @Result(property="sex",column="sex"),
+            @Result(property="phone",column="phone"),
+            @Result(property="email",column="email"),
+            @Result(property="headImage",column="head_image"),
+            @Result(property="createTime",column="create_time"),
+            @Result(property="updateTime",column="update_time"),
+            @Result(property="delFlag",column="del_flag")
+    })
+    public User getUserById(String id);
 }

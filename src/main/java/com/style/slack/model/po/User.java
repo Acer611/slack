@@ -15,7 +15,7 @@ import java.util.Date;
 public class User implements Serializable {
 
     @Id
-    @ApiModelProperty(hidden=true)
+    @ApiModelProperty(value = "用户名称", required=true)
     private String id ;
 
     @ApiModelProperty(value = "用户名称", required=true)

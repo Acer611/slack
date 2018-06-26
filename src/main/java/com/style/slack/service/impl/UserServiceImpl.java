@@ -26,7 +26,7 @@ public class UserServiceImpl implements IUserService {
     private static final Logger log = Logger.getLogger(UserController.class);
 
     @Autowired
-    private UserDao userDao;//这里会报错，但是并不会影响
+    private UserDao userDao;//Springboot 通病 会报错，但是并不会影响
 
     @Override
     public int addUser(User user) {
@@ -65,5 +65,31 @@ public class UserServiceImpl implements IUserService {
         List<User> userList = userDao.findUserByName(name);
         PageInfo result = new PageInfo(userList);
         return result;
+    }
+
+    /**
+     * 修改用户信息
+     * @param user 用户信息
+     * @return
+     */
+    @Override
+    public boolean updateUser(User user) {
+        user.setUpdateTime(new Date());
+        userDao.updateUser(user);
+        return true;
+    }
+
+    /**
+     * 删除用户信息
+     * @param id
+     * @return
+     */
+    @Override
+    public Object deleteUser(String id) {
+        User user = userDao.getUserById(id);
+        user.setUpdateTime(new Date());
+        user.setDelFlag(1);
+        userDao.updateUser(user);
+        return true;
     }
 }

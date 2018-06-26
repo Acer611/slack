@@ -34,4 +34,18 @@ public interface IUserService {
      * @return
      */
     PageInfo<User> findUserByName(int pageNum, int pageSize, String name);
+
+    /**
+     * 修改用户信息
+     * @param user 用户信息
+     * @return
+     */
+    boolean updateUser(User user);
+
+    /**
+     * 删除用户信息
+     * @param id
+     * @return
+     */
+    Object deleteUser(String id);
 }
