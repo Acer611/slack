@@ -51,4 +51,19 @@ public class UserServiceImpl implements IUserService {
         PageInfo result = new PageInfo(userDomains);
         return result;
     }
+
+    /**
+     * 根据用户名模糊查询用户信息
+     * @param pageNum
+     * @param pageSize
+     * @param name
+     * @return
+     */
+    @Override
+    public PageInfo<User> findUserByName(int pageNum, int pageSize, String name) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<User> userList = userDao.findUserByName(name);
+        PageInfo result = new PageInfo(userList);
+        return result;
+    }
 }

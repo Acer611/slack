@@ -14,7 +14,7 @@ public interface IUserService {
 
 
     /**
-     *
+     *添加用户
      * @param user
      * @return
      */
@@ -25,4 +25,13 @@ public interface IUserService {
      * @return
      */
     PageInfo<User> findAllUser(int pageNum, int pageSize);
+
+    /*
+     * 根据用户名模糊查询用户信息
+     * @param pageNum
+     * @param pageSize
+     * @param name
+     * @return
+     */
+    PageInfo<User> findUserByName(int pageNum, int pageSize, String name);
 }

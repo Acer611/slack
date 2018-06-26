@@ -39,12 +39,6 @@ public interface UserDao  {
 
 
 
-
-
-
-
-
-
     /**
      * 添加用户信息
      * @param userInfo
@@ -58,4 +52,25 @@ public interface UserDao  {
 
 
 
+    /**
+     * 根据用户名牧户查询用户信息
+     * @param name
+     * @return
+     */
+    @SelectProvider(type=UserSQLProvider.class, method="findUserByNameSQL")
+    @Results(value ={
+            @Result(id=true, property="id",column="id"),
+            @Result(property="userName",column="user_name"),
+            @Result(property="password",column="PASSWORD"),
+            @Result(property="nickName",column="nick_name"),
+            @Result(property="age",column="age"),
+            @Result(property="sex",column="sex"),
+            @Result(property="phone",column="phone"),
+            @Result(property="email",column="email"),
+            @Result(property="headImage",column="head_image"),
+            @Result(property="createTime",column="create_time"),
+            @Result(property="updateTime",column="update_time"),
+            @Result(property="delFlag",column="del_flag")
+    })
+    List<User> findUserByName(String name);
 }
