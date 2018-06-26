@@ -8,6 +8,7 @@ import com.style.slack.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,7 +27,9 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public int addUser(User user) {
-        user.setId(UUID.randomUUID().toString());
+        user.setId(UUID.randomUUID().toString().replace("-",""));
+        user.setCreateTime(new Date());
+        user.setDelFlag(0);
         return userDao.insert(user);
     }
 
