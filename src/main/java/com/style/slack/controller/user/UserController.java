@@ -5,6 +5,7 @@ import com.style.slack.model.po.User;
 import com.style.slack.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+    //记录日志
+    private static final Logger log = Logger.getLogger(UserController.class);
 
     @Autowired
     private IUserService userService;
