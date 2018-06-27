@@ -21,7 +21,7 @@ xxxx
 
 #使用说明  
 
-xxxx  
+服务启动后，可通过访问 host:prot/swagger-ui.html(如：http://localhost:8888/swagger-ui.html )查看API 接口
 xxxx  
 xxxx  
 
