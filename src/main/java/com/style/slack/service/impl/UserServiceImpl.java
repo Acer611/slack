@@ -8,6 +8,7 @@ import com.style.slack.model.po.User;
 import com.style.slack.service.IUserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -28,11 +29,17 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserDao userDao;//Springboot 通病 会报错，但是并不会影响
 
+    @Autowired
+    RedisTemplate redisTemplate;
+
     @Override
     public int addUser(User user) {
-        user.setId(UUID.randomUUID().toString().replace("-",""));
+        String id = UUID.randomUUID().toString().replace("-","");
+        user.setId(id);
         user.setCreateTime(new Date());
         user.setDelFlag(0);
+        //测试使用redis 把用户存入redis
+        redisTemplate.opsForValue().set("user_"+id,user);
         return userDao.insert(user);
     }
 
@@ -91,5 +98,21 @@ public class UserServiceImpl implements IUserService {
         user.setDelFlag(1);
         userDao.updateUser(user);
         return true;
+    }
+
+    /**
+     * 根据用户Id查询用户信息
+     * @param id
+     * @return
+     */
+    @Override
+    public User findUserById(String id) {
+        //从redis里取数据，若取不到从数据库中去
+        User user = (User) redisTemplate.opsForValue().get("user_"+id);
+
+        if(null == user){
+            user = userDao.getUserById(id);
+        }
+        return user;
     }
 }

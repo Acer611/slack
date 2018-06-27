@@ -48,4 +48,11 @@ public interface IUserService {
      * @return
      */
     Object deleteUser(String id);
+
+    /**
+     * 根据用户Id查询用户信息
+     * @param id
+     * @return
+     */
+    User findUserById( String id);
 }

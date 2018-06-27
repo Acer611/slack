@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     //记录日志
     private static final Logger log = Logger.getLogger(UserController.class);
+
 
     @Autowired
     private IUserService userService;
@@ -78,6 +80,20 @@ public class UserController {
         return userService.findUserByName(pageNum,pageSize,name);
 
     }
+    /**
+     * 根据用户Id查询用户信息
+     * @param id 用户ID
+     * @return
+     */
+    @ApiOperation(value="根据用户ID查询用户信息")
+    @ResponseBody
+    @GetMapping("/findUserById")
+    public User findUserById(@ApiParam(value="用户Id") @RequestParam String id) {
+
+
+        return userService.findUserById(id);
+
+    }
 
 
     /**
@@ -107,5 +123,7 @@ public class UserController {
         }
         return userService.deleteUser(id);
     }
+
+
 
 }
