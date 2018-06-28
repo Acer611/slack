@@ -10,8 +10,8 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
     <!-- 定义日志文件 输入位置 -->
     <property name="log_dir" value="logs/ev_cmdb" />
-    <!-- 日志最大的历史 30天 -->
-    <property name="maxHistory" value="30"/>
+    <!-- 日志最大的历史 60天 -->
+    <property name="maxHistory" value="60"/>
 
 
 
@@ -139,14 +139,6 @@
         </encoder>
     </appender>
 
-    <!--<logger name="java.sql.PreparedStatement" value="DEBUG" />-->
-    <!--<logger name="java.sql.Connection" value="DEBUG" />-->
-    <!--<logger name="java.sql.Statement" value="DEBUG" />-->
-    <!--<logger name="com.ibatis" value="DEBUG" />-->
-    <!--<logger name="com.ibatis.common.jdbc.SimpleDataSource" value="DEBUG" />-->
-    <!--<logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/>-->
-    <!--<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" />-->
-    <!-- root级别   DEBUG -->
     <root level="DEBUG">
         <!-- 控制台输出 -->
         <appender-ref ref="STDOUT" />
