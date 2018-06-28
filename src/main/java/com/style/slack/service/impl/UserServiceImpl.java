@@ -9,6 +9,7 @@ import com.style.slack.service.IUserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -32,6 +33,8 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     RedisTemplate redisTemplate;
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
 
     @Override
     public int addUser(User user) {
@@ -41,6 +44,7 @@ public class UserServiceImpl implements IUserService {
         user.setDelFlag(0);
         //测试使用redis 把用户存入redis
         redisTemplate.opsForValue().set("user_"+id,user);
+
         return userDao.insert(user);
     }
 
@@ -57,6 +61,8 @@ public class UserServiceImpl implements IUserService {
         PageHelper.startPage(pageNum, pageSize);
         List<User> userDomains = userDao.selectUsers();
         PageInfo result = new PageInfo(userDomains);
+        //redisTemplate.opsForValue().set("aaa","123");
+        //stringRedisTemplate.opsForValue().set("bbb","123");
         return result;
     }
 
