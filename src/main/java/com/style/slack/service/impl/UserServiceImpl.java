@@ -29,6 +29,7 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserDao userDao;//Springboot 通病 会报错，但是并不会影响
 
+
     @Autowired
     RedisTemplate redisTemplate;
 
