@@ -60,7 +60,7 @@ public class UserController {
             @RequestParam(name = "pageSize", required = false, defaultValue = "10")
                     int pageSize, HttpServletRequest request){
         HttpSession session = request.getSession();
-        System.out.println(session.getId());
+        System.out.println("********************Session : " + session.getId());
         return userService.findAllUser(pageNum,pageSize);
     }
 
@@ -91,8 +91,9 @@ public class UserController {
     @ApiOperation(value="根据用户ID查询用户信息")
     @ResponseBody
     @GetMapping("/findUserById")
-    public User findUserById(@ApiParam(value="用户Id") @RequestParam String id) {
-
+    public User findUserById(@ApiParam(value="用户Id") @RequestParam String id,HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        System.out.println("********************Session : " + session.getId());
 
         return userService.findUserById(id);
 
