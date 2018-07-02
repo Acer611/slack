@@ -50,8 +50,10 @@ dependencies {
     //spring session 则为解决这个问题而产生的
     compile group: 'org.springframework.session', name: 'spring-session', version: '1.3.3.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.0.2.RELEASE'
-    //security  
+    //security
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.0.2.RELEASE'
+    //spring data redis
+    compile group: 'org.springframework.session', name: 'spring-session-data-redis', version: '2.0.2.RELEASE'
 
 
 

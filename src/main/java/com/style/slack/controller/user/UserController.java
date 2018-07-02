@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -56,7 +58,9 @@ public class UserController {
             @RequestParam(name = "pageNum", required = false, defaultValue = "1")
                     int pageNum,
             @RequestParam(name = "pageSize", required = false, defaultValue = "10")
-                    int pageSize){
+                    int pageSize, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        System.out.println(session.getId());
         return userService.findAllUser(pageNum,pageSize);
     }
 

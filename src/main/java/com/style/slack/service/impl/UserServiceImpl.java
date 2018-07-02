@@ -33,6 +33,7 @@ public class UserServiceImpl implements IUserService {
 
     @Autowired
     RedisTemplate redisTemplate;
+    //Redis进行存储时 value 若也为sring 推荐使用StringRedisTemplate
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
