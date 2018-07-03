@@ -9,7 +9,8 @@ this is my slack
 
 Build --- Gradle  
 Compiler ---JAVA 1.8  
-SpringBoot2 + HikariCP + Mybatis + Redis + Spring-date-redis + swagger2  
+SpringBoot2 + HikariCP + Mybatis + Redis + Spring-date-redis 
++ swagger2 +Spring-session-data-redis + SpringSecurity  
 
 软件架构说明  
 
