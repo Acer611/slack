@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -37,6 +38,7 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
+    @Transactional
     @Override
     public int addUser(User user) {
         String id = UUID.randomUUID().toString().replace("-","");
@@ -87,6 +89,7 @@ public class UserServiceImpl implements IUserService {
      * @param user 用户信息
      * @return
      */
+    @Transactional
     @Override
     public boolean updateUser(User user) {
         user.setUpdateTime(new Date());
