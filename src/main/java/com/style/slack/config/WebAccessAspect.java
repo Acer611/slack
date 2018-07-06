@@ -76,6 +76,7 @@ public class WebAccessAspect {
         //HttpSession session = (HttpSession) requestAttributes.resolveReference(RequestAttributes.REFERENCE_SESSION);
 
 
+
         // 记录下请求内容
         logger.debug("URL : " + request.getRequestURL().toString());
         logger.debug("HTTP_METHOD : " + request.getMethod());

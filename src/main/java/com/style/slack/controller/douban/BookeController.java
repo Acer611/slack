@@ -78,6 +78,14 @@ public class BookeController {
     }
 
 
+   // https://api.douban.com/v2/movie/subject/26752088
 
+    @ApiOperation(value="根据ID查询电影信息")
+    @ResponseBody
+    @GetMapping("/getMovieInfoById")
+    public Object getMovieInfoById(  @ApiParam(value="电影id") @RequestParam String id){
+        Object result = HttpClientUtils.httpGet("https://api.douban.com/v2/movie/subject/"+id);
+        return result;
+    }
 
 }
