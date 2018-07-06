@@ -12,7 +12,9 @@ Build --- Gradle
 Compiler ---JAVA 1.8  
 SpringBoot2 + HikariCP + Mybatis + Redis + Spring-date-redis 
 + swagger2 +Spring-session-data-redis + SpringSecurity   
-新加入 定时任务 Scheduled + 邮件发送 功能
+新加入 定时任务 Scheduled + 邮件发送 功能   
+
+加入spring aop 用AOP统一处理Web请求日志
 
 软件架构说明   
  
