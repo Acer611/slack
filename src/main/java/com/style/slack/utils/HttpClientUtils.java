@@ -10,7 +10,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.http.HttpStatus;
 
@@ -19,7 +19,7 @@ import java.io.IOException;
 public class HttpClientUtils {
 
     //记录日志
-    private static final Logger logger = Logger.getLogger(HttpClientUtils.class);
+    private static final Logger logger  = LoggerFactory.getLogger(HttpClientUtils.class);
 
     private static RequestConfig requestConfig = null;
 

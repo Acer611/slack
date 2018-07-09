@@ -25,6 +25,10 @@ public class SessionConfig {
         return new JedisConnectionFactory();
     }
 
+    /**
+     * 注入定时任务的bean
+     * @return
+     */
     @Bean
     public TaskScheduler scheduledExecutorService() {
         ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();

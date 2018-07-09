@@ -7,7 +7,8 @@ import com.style.slack.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -27,7 +28,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/user")
 public class UserController {
     //记录日志
-    private static final Logger log = Logger.getLogger(UserController.class);
+    private static final Logger logger  = LoggerFactory.getLogger(UserController.class);
 
 
     @Autowired
@@ -61,6 +62,7 @@ public class UserController {
                     int pageSize, HttpServletRequest request){
         HttpSession session = request.getSession();
         System.out.println("********************Session : " + session.getId());
+        logger.debug("查询所有用户信息......");
         return userService.findAllUser(pageNum,pageSize);
     }
 
@@ -111,7 +113,7 @@ public class UserController {
     public Object updateUser( User user){
 
         if(StringUtils.isEmpty(user.getId())){
-            log.info("修改用户时传参有误！！");
+            logger.info("修改用户时传参有误！！");
             return "error: 数据输入有误，请检查输入数据！！";
         }
        return userService.updateUser(user);
@@ -122,7 +124,7 @@ public class UserController {
     public Object deleteUser(@ApiParam(value="用户id") @PathVariable String id){
 
         if(StringUtils.isEmpty(id)){
-            log.info("修改用户时传参有误！！");
+            logger.info("修改用户时传参有误！！");
             return "error: 数据输入有误，请检查输入数据！！";
         }
         return userService.deleteUser(id);

@@ -2,11 +2,11 @@ package com.style.slack.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.style.slack.controller.user.UserController;
 import com.style.slack.dao.user.UserDao;
 import com.style.slack.model.po.User;
 import com.style.slack.service.IUserService;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -26,7 +26,7 @@ import java.util.UUID;
 public class UserServiceImpl implements IUserService {
 
     //记录日志
-    private static final Logger log = Logger.getLogger(UserController.class);
+    private static final Logger logger  = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserDao userDao;//Springboot 通病 会报错，但是并不会影响
@@ -59,7 +59,7 @@ public class UserServiceImpl implements IUserService {
      * */
     @Override
     public PageInfo<User> findAllUser(int pageNum, int pageSize) {
-        log.info("查询所有用户的信息...");
+        logger.info("查询所有用户的信息...");
         //将参数传给这个方法就可以实现物理分页了，非常简单。
         PageHelper.startPage(pageNum, pageSize);
         List<User> userDomains = userDao.selectUsers();

@@ -4,7 +4,8 @@ package com.style.slack.controller.email;
 import com.style.slack.service.IEmailService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class EmailController {
 
     //记录日志
-    private static final Logger log = Logger.getLogger(EmailController.class);
+    private static final Logger logger  = LoggerFactory.getLogger(EmailController.class);
 
     @Autowired
     private  IEmailService emailService;
