@@ -35,7 +35,7 @@ public class BookeController {
 
    // https://api.douban.com/v2/movie/coming_soon?start=0&count=3
 
-    @ApiOperation(value="查询电影信息")
+    @ApiOperation(value="查询电影信息 （ https://api.douban.com/v2/movie/coming_soon?start=0&count=3）")
     @ResponseBody
     @GetMapping("/getMovieInfo")
     public Object getMovieInfo(){
@@ -45,7 +45,7 @@ public class BookeController {
 
 
     //https://api.douban.com/v2/movie/$(board.key}?start=0&count=10
-    @ApiOperation(value="多参数查询信息")
+    @ApiOperation(value="多参数查询信息 （https://api.douban.com/v2/movie/$(board.key}?start=0&count=10）")
     @ResponseBody
     @GetMapping("/getMultiInfo")
     public Object getMultiInfo( @ApiParam(value="参数1") @RequestParam String param1,
@@ -80,7 +80,7 @@ public class BookeController {
 
    // https://api.douban.com/v2/movie/subject/26752088
 
-    @ApiOperation(value="根据ID查询电影信息")
+    @ApiOperation(value="根据ID查询电影信息（https://api.douban.com/v2/movie/subject/26752088）")
     @ResponseBody
     @GetMapping("/getMovieInfoById")
     public Object getMovieInfoById(  @ApiParam(value="电影id") @RequestParam String id){
@@ -88,4 +88,21 @@ public class BookeController {
         return result;
     }
 
+
+   // https://api.douban.com/v2/movie/${this.data.type}?start=${dtart}&count=${this.data.size}
+
+    @ApiOperation(value="根据类型查询电影信息（ https://api.douban.com/v2/movie/${this.data.type}?start=${dtart}&count=${this.data.size}）")
+    @ResponseBody
+    @GetMapping("/getMovieInfoByDate")
+    public Object getMovieInfoByDate(  @ApiParam(value="电影类型类型") @RequestParam String dataType,
+                                     @ApiParam(value="从哪开始") @RequestParam String dataStart,
+                                     @ApiParam(value="要多少条") @RequestParam String dataSize){
+
+        String url = "https://api.douban.com/v2/movie/";
+        String mid = "?start=";
+        String end = "&count=";
+
+        Object result = HttpClientUtils.httpGet(url+dataType+mid+dataStart+end+dataSize);
+        return result;
+    }
 }
