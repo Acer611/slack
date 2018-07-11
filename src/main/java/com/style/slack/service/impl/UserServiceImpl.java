@@ -8,8 +8,12 @@ import com.style.slack.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -66,6 +70,29 @@ public class UserServiceImpl implements IUserService {
         PageInfo result = new PageInfo(userDomains);
         //redisTemplate.opsForValue().set("aaa","123");
         //stringRedisTemplate.opsForValue().set("bbb","123");
+       boolean flag = avoidReSumbit("zzzz",result);
+
+        Object obj = redisTemplate.opsForValue().get("zzzz");
+
+        return result;
+    }
+
+    private boolean avoidReSumbit(String sb,Object obj) {
+
+        boolean result = (boolean) redisTemplate.execute(new RedisCallback<Boolean>() {
+            public Boolean doInRedis(RedisConnection redisConnection) throws DataAccessException {
+                RedisSerializer<String> redisSerializer = redisTemplate.getStringSerializer();
+                byte[] key = redisSerializer.serialize(sb);
+                byte[] value = redisSerializer.serialize(obj.toString());
+
+                boolean flag = redisConnection.setNX(key,value);
+                redisConnection.expire(key, 60);
+
+                return flag;
+            }
+        });
+
+
         return result;
     }
 

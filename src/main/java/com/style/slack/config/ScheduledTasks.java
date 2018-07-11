@@ -1,4 +1,4 @@
-package com.style.slack.controller;
+package com.style.slack.config;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
