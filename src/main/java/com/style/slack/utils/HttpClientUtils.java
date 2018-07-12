@@ -16,6 +16,11 @@ import org.apache.http.HttpStatus;
 
 import java.io.IOException;
 
+/**
+ * httpclient工具类
+ * @author  Gaofei
+ * @Date 2018-07-06
+ */
 public class HttpClientUtils {
 
     //记录日志

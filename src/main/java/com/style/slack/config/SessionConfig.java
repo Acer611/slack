@@ -9,7 +9,9 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 
 
 /***
- * create by Gaofei 2018/07/02
+ *
+ * @author Gaofei
+ * @Date create by  2018/07/02
  * Session 共享
  *  分布式系统中session共享有很多不错的解决方案，
  *  其中托管到缓存中是比较常见的方案之一，

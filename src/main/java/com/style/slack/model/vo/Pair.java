@@ -6,7 +6,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
  import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
- * Pair
+ * Pair邮件发送所需要的实体
  * @author Gaofei
  * @date create by 2018-07-05
  * @param <L>
