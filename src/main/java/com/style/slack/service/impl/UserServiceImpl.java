@@ -70,7 +70,9 @@ public class UserServiceImpl implements IUserService {
         PageInfo result = new PageInfo(userDomains);
         //redisTemplate.opsForValue().set("aaa","123");
         //stringRedisTemplate.opsForValue().set("bbb","123");
-       boolean flag = avoidReSumbit("zzzz",result);
+
+        //TODO 防止重复提交 细节逻辑待完善
+         boolean flag = avoidReSumbit("zzzz",result);
 
         Object obj = redisTemplate.opsForValue().get("zzzz");
 
