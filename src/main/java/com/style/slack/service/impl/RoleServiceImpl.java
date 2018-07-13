@@ -28,7 +28,6 @@ public class RoleServiceImpl implements IRoleService {
 
     @Override
     public PageInfo<Role> findAllRole(int pageNum, int pageSize) {
-        logger.info("查询所有角色的信息...");
         PageHelper.startPage(pageNum, pageSize);
         List<Role> roles = roleDao.selectRoles();
         PageInfo result = new PageInfo(roles);

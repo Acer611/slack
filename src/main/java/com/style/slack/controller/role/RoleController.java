@@ -34,7 +34,7 @@ public class RoleController {
      * @param pageSize
      * @return
      */
-    @ApiOperation(value="查询用户")
+    @ApiOperation(value="查询所有角色")
     @ResponseBody
     @GetMapping("/all")
     public PageInfo<Role> findAllUser(
