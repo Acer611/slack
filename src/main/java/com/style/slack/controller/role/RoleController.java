@@ -37,7 +37,7 @@ public class RoleController {
     @ApiOperation(value="查询所有角色")
     @ResponseBody
     @GetMapping("/all")
-    public PageInfo<Role> findAllUser(
+    public PageInfo<Role> findAllRole(
             @RequestParam(name = "pageNum", required = false, defaultValue = "1")
                     int pageNum,
             @RequestParam(name = "pageSize", required = false, defaultValue = "10")
@@ -45,6 +45,16 @@ public class RoleController {
         HttpSession session = request.getSession();
         System.out.println("********************Session : " + session.getId());
         return roleService.findAllRole(pageNum,pageSize);
+    }
+
+
+    @ApiOperation(value="根据角色ID查询角色信息")
+    @ResponseBody
+    @GetMapping("/queryById")
+    public Role findRoleById(@RequestParam(name = "角色ID" ,required = true) int id,HttpServletRequest request){
+        logger.info("根据角色ID查询角色信息......");
+       Role role = roleService.queryRoleById(id);
+       return role;
     }
 
 }

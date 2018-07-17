@@ -3,6 +3,7 @@ package com.style.slack.controller.user;
 
 import com.github.pagehelper.PageInfo;
 import com.style.slack.model.po.User;
+import com.style.slack.model.po.UserInfo;
 import com.style.slack.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -98,6 +99,22 @@ public class UserController {
         System.out.println("********************Session : " + session.getId());
 
         return userService.findUserById(id);
+
+    }
+
+    /**
+     * 根据用户Id查询用户信息
+     * @param id 用户ID
+     * @return
+     */
+    @ApiOperation(value="根据用户ID查询用户信息(包含角色信息)")
+    @ResponseBody
+    @GetMapping("/queryUserById")
+    public User queryUserById(@ApiParam(value="用户Id") @RequestParam String id, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        System.out.println("********************Session : " + session.getId());
+
+        return userService.queryUserById(id);
 
     }
 

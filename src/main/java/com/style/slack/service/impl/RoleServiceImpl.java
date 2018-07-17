@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -26,11 +27,31 @@ public class RoleServiceImpl implements IRoleService {
     @Autowired
     private RoleDao roleDao;
 
+    /**
+     * 查询所有角色信息
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
     @Override
     public PageInfo<Role> findAllRole(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<Role> roles = roleDao.selectRoles();
         PageInfo result = new PageInfo(roles);
         return result;
+    }
+
+    /**
+     * 根据角色Id查询角色信息
+     * @param id
+     * @return
+     */
+    @Override
+    public Role queryRoleById(int id) {
+        HashMap paraMap = new HashMap();
+        if(id !=0){
+            paraMap.put("id",id);
+        }
+        return roleDao.queryRoleById(paraMap);
     }
 }

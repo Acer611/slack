@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.style.slack.dao.user.UserDao;
 import com.style.slack.model.po.User;
+import com.style.slack.model.po.UserInfo;
 import com.style.slack.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,8 +74,13 @@ public class UserServiceImpl implements IUserService {
 
         //TODO 防止重复提交 细节逻辑待完善
          boolean flag = avoidReSumbit("zzzz",result);
+        PageInfo resObj = new PageInfo();
+        if(!flag){
+            resObj = (PageInfo) redisTemplate.opsForValue().get("zzzz");
+            return resObj;
+         }
 
-        Object obj = redisTemplate.opsForValue().get("zzzz");
+         Object obj = redisTemplate.opsForValue().get("zzzz");
 
         return result;
     }
@@ -154,5 +160,16 @@ public class UserServiceImpl implements IUserService {
             user = userDao.getUserById(id);
         }
         return user;
+    }
+
+    /**
+     * 根据用户ID查询用户信息(包含角色信息
+     * @param id
+     * @return
+     */
+    @Override
+    public User queryUserById(String id) {
+        User userInfo = userDao.queryUserByUserId(id);
+        return userInfo;
     }
 }

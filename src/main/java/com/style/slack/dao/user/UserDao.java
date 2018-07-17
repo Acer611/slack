@@ -3,14 +3,13 @@ package com.style.slack.dao.user;
 import com.style.slack.model.po.User;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.StatementType;
-
+import org.apache.ibatis.annotations.ResultMap;
 import java.util.List;
 
 /**
  * 用户dao层处理类
  *  Created by Gaofei on 2018/6/11.
  */
-
 
 public interface UserDao  {
 
@@ -119,4 +118,17 @@ public interface UserDao  {
             @Result(property="delFlag",column="del_flag")
     })
     public User getUserById(String id);
+
+
+    /**
+     * 根据用户ID查询用户信息(包含角色信息)
+     * @param id
+     * @return
+     */
+     @SelectProvider(type=UserSQLProvider.class, method="queryUserByUserId")
+    // @ResultMap("UserResult")
+    public User queryUserByUserId(String id);
+
+
+
 }

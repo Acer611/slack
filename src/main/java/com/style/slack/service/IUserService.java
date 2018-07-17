@@ -3,6 +3,7 @@ package com.style.slack.service;
 
 import com.github.pagehelper.PageInfo;
 import com.style.slack.model.po.User;
+import com.style.slack.model.po.UserInfo;
 
 import java.util.List;
 
@@ -55,4 +56,11 @@ public interface IUserService {
      * @return
      */
     User findUserById( String id);
+
+    /**
+     * 根据用户ID查询用户信息(包含角色信息
+     * @param id
+     * @return
+     */
+    User queryUserById(String id);
 }

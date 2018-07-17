@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户实体信息
@@ -50,6 +51,8 @@ public class User implements Serializable {
 
     @ApiModelProperty(hidden=true)
     private int delFlag;
+
+    private List<Role> roleList;
 
     public String getId() {
         return id;
@@ -145,5 +148,13 @@ public class User implements Serializable {
 
     public void setDelFlag(int delFlag) {
         this.delFlag = delFlag;
+    }
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
     }
 }
