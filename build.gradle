@@ -69,13 +69,8 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: '2.0.2.RELEASE'
     // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
     compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
-
-
-
-
-
-
-
+    //添加微信的依赖
+    compile group: 'com.github.binarywang', name: 'weixin-java-mp', version: '3.1.0'
 
 
 
