@@ -1,7 +1,7 @@
 package com.style.slack.common.exception;
 
 /**
- * Created by ZhaoYidong on 2016/12/26.
+ * @author Gaofei 2018年7月18日
  */
 public class ErrorInfo<T> {
     private Integer code;

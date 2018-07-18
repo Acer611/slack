@@ -71,7 +71,7 @@ public class FileDownloadUtil {
         URL url = new URL(headUrl);
         //获取系统临时文件路径
         String folder =System.getProperty("java.io.tmpdir");
-        String filename = UuidUtil.getUuidStr();
+        String filename = UUIDUtil.getUuidStr();
         String filePath = folder + System.getProperty("file.separator") + filename;
         try {
             URLConnection conn = url.openConnection();

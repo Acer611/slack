@@ -5,9 +5,8 @@ package com.style.slack.common.exception;
  * 
  * BusinessException
  * 业务处理失败异常，
- * @author yongteng.huo 2015年6月28日
+ * @author Gaofei 2018年7月18日
  * @see
- * @since 1.0
  */
 //@com.fasterxml.jackson.databind.annotation.JsonSerialize(using = BusinessExceptionJacksonSerializer.class)
 //@com.fasterxml.jackson.databind.annotation.JsonDeserialize(using = BusinessExceptionJacksonDeserializer.class)

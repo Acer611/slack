@@ -13,6 +13,10 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 获取ip地址工具
+ * @author  Gaofei 2018-07-18
+ */
 public class HttpServletUtil {
 	/**
 	 * 获取真实的远程客户端IP，不受Nginx和apache等前端webserver分发影响

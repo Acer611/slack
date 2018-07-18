@@ -1,5 +1,8 @@
 package com.style.slack.common.constant;
 
+/**
+ * @author Gaofei 2018年7月18日
+ */
 public class ErrorConstant {
 
 	/**
