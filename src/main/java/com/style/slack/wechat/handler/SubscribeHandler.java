@@ -8,6 +8,7 @@ import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
 import me.chanjar.weixin.mp.bean.result.WxMpUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -19,6 +20,8 @@ import java.util.Map;
  */
 @Component
 public class SubscribeHandler extends AbstractHandler {
+    @Autowired
+    private WeixinService wxService;
 
   @Override
   public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage, Map<String, Object> context, WxMpService wxMpService,
@@ -34,6 +37,8 @@ public class SubscribeHandler extends AbstractHandler {
     if (userWxInfo != null) {
       // TODO 可以添加关注用户到本地
       System.out.println(".............nickName :" + userWxInfo.getNickname());
+
+
     }
 
     WxMpXmlOutMessage responseResult = null;

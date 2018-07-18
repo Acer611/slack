@@ -1,7 +1,7 @@
 package com.style.slack.controller.douban;
 
 
-import com.style.slack.utils.HttpClientUtils;
+import com.style.slack.common.utils.HttpClientUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

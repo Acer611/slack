@@ -1,4 +1,4 @@
-package com.style.slack.controller;
+package com.style.slack.controller.wechat;
 
 import com.style.slack.wechat.service.WeixinService;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;

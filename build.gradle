@@ -71,6 +71,9 @@ dependencies {
     compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
     //添加微信的依赖
     compile group: 'com.github.binarywang', name: 'weixin-java-mp', version: '3.1.0'
+    // https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2
+    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.3.3.RELEASE'
+
 
 
 
