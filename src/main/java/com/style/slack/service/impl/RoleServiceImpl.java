@@ -54,4 +54,15 @@ public class RoleServiceImpl implements IRoleService {
         }
         return roleDao.queryRoleById(paraMap);
     }
+
+    /**
+     * 添加角色信息
+     * @param role
+     * @return
+     */
+    @Override
+    public Role addRoleInfo(Role role) {
+
+        return null;
+    }
 }

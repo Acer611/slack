@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2018-07-18 16:36:28
+Date: 2018-07-19 16:37:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -209,19 +209,19 @@ INSERT INTO `t_user_role` VALUES ('3', 'bda7e6d9ed064ee49c2c17d3a0595865', '3', 
 DROP TABLE IF EXISTS `t_wx_user`;
 CREATE TABLE `t_wx_user` (
   `id` varchar(255) NOT NULL,
-  `union_id` varchar(255) DEFAULT NULL COMMENT '微信公众平台唯一标识',
+  `unionid` varchar(255) DEFAULT NULL COMMENT '微信公众平台唯一标识',
   `openid` varchar(255) DEFAULT NULL COMMENT '公众号唯一标识',
-  `nick_name` varchar(255) DEFAULT NULL COMMENT '昵称',
-  `sex_desc` varchar(255) DEFAULT NULL COMMENT '性别描述',
+  `nickname` varchar(255) DEFAULT NULL COMMENT '昵称',
+  `sexdesc` varchar(255) DEFAULT NULL COMMENT '性别描述',
   `sex` smallint(6) DEFAULT NULL COMMENT '性别',
   `language` varchar(255) DEFAULT NULL COMMENT '语言',
   `city` varchar(255) DEFAULT NULL COMMENT '城市',
   `province` varchar(255) DEFAULT NULL COMMENT '省份',
   `country` varchar(255) DEFAULT NULL COMMENT '国家',
-  `head_img_url` varchar(255) DEFAULT NULL COMMENT '头像',
-  `subscribe_time` datetime DEFAULT NULL COMMENT '订阅时间',
+  `headimgurl` varchar(255) DEFAULT NULL COMMENT '头像',
+  `subscribetime` datetime DEFAULT NULL COMMENT '订阅时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
-  `group_id` int(11) DEFAULT NULL,
+  `groupid` int(11) DEFAULT NULL,
   `tags` varchar(255) DEFAULT NULL COMMENT '标签',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -229,3 +229,4 @@ CREATE TABLE `t_wx_user` (
 -- ----------------------------
 -- Records of t_wx_user
 -- ----------------------------
+INSERT INTO `t_wx_user` VALUES ('1', '1', '1', 'fsfd', '男', '0', 'china', '北京', '北京', '中国', null, '2018-07-19 13:49:30', '发顺丰萨芬', null, null);

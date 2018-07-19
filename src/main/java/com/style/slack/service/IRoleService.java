@@ -26,4 +26,11 @@ public interface IRoleService {
      * @return
      */
     Role queryRoleById(int id);
+
+    /**
+     * 添加角色信息
+     * @param role
+     * @return
+     */
+    Role addRoleInfo(Role role);
 }

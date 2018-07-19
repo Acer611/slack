@@ -15,6 +15,7 @@ import java.util.List;
 
 public class User implements Serializable {
 
+
     @Id
     @ApiModelProperty(value = "用户Id", required=true)
     private String id ;

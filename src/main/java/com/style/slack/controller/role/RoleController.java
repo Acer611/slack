@@ -9,10 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -55,6 +52,16 @@ public class RoleController {
         logger.info("根据角色ID查询角色信息......");
        Role role = roleService.queryRoleById(id);
        return role;
+    }
+
+    @ApiOperation(value = "添加角色信息")
+    @ResponseBody
+    @PostMapping("addRole")
+    public Role addRole(@RequestParam(name = "角色信息" ) Role role,HttpServletRequest request){
+        logger.info("添加角色信息......角色名为 ：" + role.getRole());
+        role = roleService.addRoleInfo(role);
+        return  role;
+
     }
 
 }
