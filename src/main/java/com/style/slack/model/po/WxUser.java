@@ -50,7 +50,7 @@ public class WxUser  implements Serializable {
 
     //国家
     @ApiModelProperty(value = "国家")
-    private String country;
+    private String contury;
 
     //头像
     @ApiModelProperty(value = "头像")
@@ -145,12 +145,12 @@ public class WxUser  implements Serializable {
         this.province = province;
     }
 
-    public String getCountry() {
-        return country;
+    public String getContury() {
+        return contury;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setContury(String contury) {
+        this.contury = contury;
     }
 
     public String getHeadImgUrl() {

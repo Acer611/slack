@@ -1,6 +1,7 @@
 package com.style.slack.service;
 
 import com.style.slack.model.po.WxUser;
+import me.chanjar.weixin.mp.bean.result.WxMpUser;
 
 /**
  * 微信用户信息操作类
@@ -13,7 +14,7 @@ public interface IWxUserService {
      * @param wxUser
      * @return
      */
-    int addWxUser(WxUser wxUser);
+    WxUser addWxUser(WxUser wxUser);
 
     /**
      * 根据openId查询微信用户信息
@@ -37,5 +38,10 @@ public interface IWxUserService {
      */
     int upWxUser(WxUser wxUser);
 
+    /**
+     * 组装添加微信用户信息
+     * @param userWxInfo
+     */
 
+    WxUser addWxUserInfo(WxMpUser userWxInfo);
 }

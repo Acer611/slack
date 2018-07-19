@@ -1,6 +1,8 @@
 package com.style.slack.dao.wxuser;
 
+import com.style.slack.dao.user.UserSQLProvider;
 import com.style.slack.model.po.WxUser;
+import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Select;
 
 /**
@@ -14,6 +16,7 @@ public interface WxUserDao {
      * @param wxUser
      * @return
      */
+    @InsertProvider(type=WxUserProvider.class, method="addWxUser")
     int addWxUser(WxUser wxUser);
 
     /**
@@ -30,7 +33,7 @@ public interface WxUserDao {
      * @return
      */
     @Select("SELECT id,unionid,openid,nickname,sexdesc,sex,`language`," +
-            "city,province,country,headimgurl,subscribetime,remark," +
+            "city,province,contury,headimgurl,subscribetime,remark," +
             "groupid,tags FROM t_wx_user WHERE unionid=#{unionId}")
     WxUser queryWxUserByUnionId(String unionId);
 

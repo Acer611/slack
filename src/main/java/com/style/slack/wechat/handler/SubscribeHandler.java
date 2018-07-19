@@ -1,5 +1,6 @@
 package com.style.slack.wechat.handler;
 
+import com.style.slack.service.IWxUserService;
 import com.style.slack.wechat.builder.TextBuilder;
 import com.style.slack.wechat.service.WeixinService;
 import me.chanjar.weixin.common.error.WxErrorException;
@@ -23,6 +24,9 @@ public class SubscribeHandler extends AbstractHandler {
     @Autowired
     private WeixinService wxService;
 
+    @Autowired
+    private IWxUserService wxUserService;
+
   @Override
   public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage, Map<String, Object> context, WxMpService wxMpService,
                                   WxSessionManager sessionManager) throws WxErrorException {
@@ -37,7 +41,7 @@ public class SubscribeHandler extends AbstractHandler {
     if (userWxInfo != null) {
       // TODO 可以添加关注用户到本地
       System.out.println(".............nickName :" + userWxInfo.getNickname());
-
+      wxUserService.addWxUserInfo(userWxInfo);
 
     }
 
