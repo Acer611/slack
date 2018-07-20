@@ -1,6 +1,5 @@
 package com.style.slack.dao.wxuser;
 
-import com.style.slack.dao.user.UserSQLProvider;
 import com.style.slack.model.po.WxUser;
 import org.apache.ibatis.annotations.*;
 
@@ -8,6 +7,7 @@ import org.apache.ibatis.annotations.*;
  * 微信用户dao层操作类
  * @author  Gaofei 2018-07-19
  */
+
 public interface WxUserDao {
 
     /**

@@ -75,9 +75,12 @@ public class WxUser  implements Serializable {
     //二维码ticket
     @ApiModelProperty(value = "二维码ticket")
     private String ticket;
+
     //二维码地址
     @ApiModelProperty(value = "二维码地址")
     private String ticketUrl;
+
+
 
     public String getId() {
         return id;

@@ -1,5 +1,6 @@
 package com.style.slack.service.impl;
 
+import com.style.slack.common.constant.WxConstant;
 import com.style.slack.common.utils.UUIDUtil;
 import com.style.slack.dao.wxuser.WxUserDao;
 import com.style.slack.model.po.WxUser;
@@ -166,9 +167,9 @@ public class WxUserServiceImpl implements IWxUserService {
                 wxMpQrCodeTicket = weixinService.getQrcodeService().qrCodeCreateLastTicket(wxUser.getId());
                 if(null != wxMpQrCodeTicket){
                     this.logger.info("更新微信信息表中ticket 和ticket_url字段 " );
-                    String ticketUrl = wxMpQrCodeTicket.getUrl();
+                    //String ticketUrl = wxMpQrCodeTicket.getUrl();
                     wxUser.setTicket(wxMpQrCodeTicket.getTicket());
-                    wxUser.setTicketUrl(ticketUrl);
+                    wxUser.setTicketUrl(WxConstant.TICKET_URL + wxMpQrCodeTicket.getTicket());
                     wxUserDao.upWxUser(wxUser);
                 }
             } catch (WxErrorException e) {
@@ -176,9 +177,9 @@ public class WxUserServiceImpl implements IWxUserService {
                 e.printStackTrace();
             }
 
-            wxUser.setTicket("https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + wxMpQrCodeTicket.getTicket());
+            wxUser.setTicket(WxConstant.TICKET_URL + wxMpQrCodeTicket.getTicket());
         }else{
-            wxUser.setTicket("https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=" + wxUser.getTicket());
+            wxUser.setTicket(WxConstant.TICKET_URL + wxUser.getTicket());
         }
 
     return wxUser.getTicketUrl();
