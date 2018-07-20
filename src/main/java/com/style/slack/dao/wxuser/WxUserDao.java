@@ -2,8 +2,7 @@ package com.style.slack.dao.wxuser;
 
 import com.style.slack.dao.user.UserSQLProvider;
 import com.style.slack.model.po.WxUser;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 /**
  * 微信用户dao层操作类
@@ -25,6 +24,7 @@ public interface WxUserDao {
      * @return
      */
 
+    @SelectProvider(type=WxUserProvider.class,method = "queryWxUserByOpenId")
     WxUser queryWxUserByOpenId(String openId);
 
     /**
@@ -34,7 +34,7 @@ public interface WxUserDao {
      */
     @Select("SELECT id,unionid,openid,nickname,sexdesc,sex,`language`," +
             "city,province,contury,headimgurl,subscribetime,remark," +
-            "groupid,tags FROM t_wx_user WHERE unionid=#{unionId}")
+            "groupid,tags,ticket,ticketurl FROM t_wx_user WHERE unionid=#{unionId}")
     WxUser queryWxUserByUnionId(String unionId);
 
     /**
@@ -42,6 +42,9 @@ public interface WxUserDao {
      * @param wxUser
      * @return
      */
+    @UpdateProvider(type=WxUserProvider.class,method = "upWxUser")
     int upWxUser(WxUser wxUser);
 
+    @DeleteProvider(type=WxUserProvider.class,method = "deleteWxUserByOpenId")
+    void deleteWxUserByOpenId(String openId);
 }

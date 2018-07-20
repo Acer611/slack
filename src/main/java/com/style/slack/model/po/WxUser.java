@@ -72,6 +72,12 @@ public class WxUser  implements Serializable {
     @ApiModelProperty(value = "标签")
     private String tags;
 
+    //二维码ticket
+    @ApiModelProperty(value = "二维码ticket")
+    private String ticket;
+    //二维码地址
+    @ApiModelProperty(value = "二维码地址")
+    private String ticketUrl;
 
     public String getId() {
         return id;
@@ -191,5 +197,21 @@ public class WxUser  implements Serializable {
 
     public void setTags(String tags) {
         this.tags = tags;
+    }
+
+    public String getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(String ticket) {
+        this.ticket = ticket;
+    }
+
+    public String getTicketUrl() {
+        return ticketUrl;
+    }
+
+    public void setTicketUrl(String ticketUrl) {
+        this.ticketUrl = ticketUrl;
     }
 }

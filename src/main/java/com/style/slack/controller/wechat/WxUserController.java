@@ -1,13 +1,15 @@
 package com.style.slack.controller.wechat;
 
-import com.style.slack.model.po.User;
 import com.style.slack.model.po.WxUser;
 import com.style.slack.service.IWxUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +27,9 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/wx/user")
 public class WxUserController {
 
+    //记录日志
+    private static final Logger logger  = LoggerFactory.getLogger(WxUserController.class);
+
     @Autowired
     private IWxUserService wxUserService;
 
@@ -41,6 +46,26 @@ public class WxUserController {
         System.out.println("********************Session : " + session.getId());
 
         return wxUserService.queryWxUserByUnionId(unionId);
+
+    }
+
+    /**
+     * 生成个性二位码
+     * @param openId
+     * @param request
+     * @return
+     */
+
+    @ApiOperation(value ="生成个性二维码")
+    @ResponseBody
+    @GetMapping("/generatePersonQRCode")
+    public String generatePersonQRCode(@ApiParam(value="公众号内唯一的标识") @RequestParam String openId,HttpServletRequest request){
+        if(StringUtils.isEmpty(openId)){
+            return  "传入参数有误，请检查参数!!";
+        }
+
+
+        return  wxUserService.generatePersonQRCode(openId);
 
     }
 }

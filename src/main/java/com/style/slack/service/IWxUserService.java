@@ -1,6 +1,7 @@
 package com.style.slack.service;
 
 import com.style.slack.model.po.WxUser;
+import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.mp.bean.result.WxMpUser;
 
 /**
@@ -44,4 +45,17 @@ public interface IWxUserService {
      */
 
     WxUser addWxUserInfo(WxMpUser userWxInfo);
+
+    /**
+     * 移出微信用户信息
+     * @param openId
+     * @return
+     */
+    int removeWxUserByOpenId(String openId);
+
+    /**
+     * 生成个性二维码
+     * @param openId
+     */
+    String generatePersonQRCode(String openId) ;
 }
