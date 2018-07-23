@@ -6,6 +6,7 @@ import com.style.slack.model.po.User;
 import com.style.slack.model.po.UserInfo;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 用户信息service层接口
@@ -63,4 +64,6 @@ public interface IUserService {
      * @return
      */
     User queryUserById(String id);
+
+    List<Map<String,Object>> testQuery(String id);
 }

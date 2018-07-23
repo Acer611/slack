@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -171,5 +172,15 @@ public class UserServiceImpl implements IUserService {
     public User queryUserById(String id) {
         User userInfo = userDao.queryUserByUserId(id);
         return userInfo;
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> testQuery(String id) {
+        return userDao.testQuery(id);
     }
 }

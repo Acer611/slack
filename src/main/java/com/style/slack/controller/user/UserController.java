@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -117,6 +119,23 @@ public class UserController {
         return userService.queryUserById(id);
 
     }
+
+    /**
+     * 根据用户Id查询用户信息
+     * @param id 用户ID
+     * @return
+     */
+    @ApiOperation(value="TestQuery")
+    @ResponseBody
+    @GetMapping("/testQuery")
+    public List<Map<String,Object>> testQuery(@ApiParam(value="用户Id") @RequestParam String id, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        System.out.println("********************Session : " + session.getId());
+
+        return userService.testQuery(id);
+
+    }
+
 
 
     /**

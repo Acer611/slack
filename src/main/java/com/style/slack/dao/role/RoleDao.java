@@ -1,10 +1,7 @@
 package com.style.slack.dao.role;
 
 import com.style.slack.model.po.Role;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +29,7 @@ public interface RoleDao {
             @Result(property="updateTime",column="update_time"),
             @Result(property="delFlag",column="del_flag")
     })
+    //@ResultMap("RoleResult")
     public List<Role> selectRoles();
 
 

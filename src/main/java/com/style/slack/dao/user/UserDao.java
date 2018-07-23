@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.StatementType;
 import org.apache.ibatis.annotations.ResultMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 用户dao层处理类
@@ -130,5 +131,12 @@ public interface UserDao  {
     public User queryUserByUserId(String id);
 
 
-
+   @Select("select s.id,s.age,s.create_time,s.del_flag,s.email,s.head_image,s.nick_name,s.`PASSWORD`,s.phone,s.sex,s.update_time,s.user_name, " +
+           "r.id,r.role_id,r.user_id," +
+           "t.id,t.category,t.create_time,t.del_flag,t.`desc`,t.role,t.role,t.update_time " +
+           " from s_user s " +
+           "left join t_user_role r ON s.id = r.user_id " +
+           "left join t_role t ON t.id = r.role_id " +
+           "where s.id=#{id}")
+    List<Map<String,Object>> testQuery(String id);
 }
