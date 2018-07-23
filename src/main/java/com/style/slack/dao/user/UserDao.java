@@ -126,7 +126,7 @@ public interface UserDao  {
      * @return
      */
      @SelectProvider(type=UserSQLProvider.class, method="queryUserByUserId")
-    // @ResultMap("UserResult")
+     //@ResultMap("UserResult")
     public User queryUserByUserId(String id);
 
 

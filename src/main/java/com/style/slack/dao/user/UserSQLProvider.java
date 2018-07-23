@@ -98,10 +98,8 @@ public class UserSQLProvider {
     public String queryUserByUserId(String id){
         return new SQL() {{
             SELECT("s.id,s.age,s.create_time,s.del_flag,s.email,s.head_image,s.nick_name,s.`PASSWORD`,s.phone,s.sex,s.update_time,s.user_name");
-            SELECT("r.id,r.role_id,r.user_id,");
+            SELECT("r.id,r.role_id,r.user_id");
             SELECT("t.id,t.category,t.create_time,t.del_flag,t.`desc`,t.role,t.role,t.update_time");
-
-            //FROM s_user s LEFT JOIN t_user_role r ON s.id = r.user_id LEFT JOIN  t_role t ON t.id = r.role_id
             FROM("s_user s");
             LEFT_OUTER_JOIN("t_user_role r ON s.id = r.user_id");
             LEFT_OUTER_JOIN(" t_role t ON t.id = r.role_id");
