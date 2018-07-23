@@ -18,58 +18,48 @@ public class WxUserProvider {
 
        return new SQL() {{
            INSERT_INTO("t_wx_user");
-
            if (wxUser.getId() != null) {
                VALUES("id", "#{id}");
            }
-
            if (wxUser.getUnionId() != null) {
                VALUES("unionid", "#{unionId}");
            }
            if (wxUser.getOpenId() != null) {
                VALUES("openid", "#{openId}");
            }
-
            if (wxUser.getNickName() != null) {
                VALUES("nickname", "#{nickName}");
            }
            if (wxUser.getSexDesc() != null) {
                VALUES("sexdesc", "#{sexDesc}");
            }
-
            if (wxUser.getSex() != -1) {
                VALUES("sex", "#{sex}");
            }
-
            if (wxUser.getLanguage() != null) {
                VALUES("language", "#{language}");
            }
-
            if (wxUser.getCity() != null) {
                VALUES("city", "#{city}");
            }
            if (wxUser.getProvince() != null) {
                VALUES("province", "#{province}");
            }
-
            if (wxUser.getContury() != null) {
                VALUES("contury", "#{contury}");
            }
            if (wxUser.getHeadImgUrl() != null) {
                VALUES("headimgurl", "#{headImgUrl}");
            }
-
            if (wxUser.getSubscribeTime() != null) {
                VALUES("subscribetime", "#{subscribeTime}");
            }
-
            if (wxUser.getRemark() != null) {
                VALUES("remark", "#{remark}");
            }
            if (wxUser.getGroupId() != -1) {
                VALUES("groupid", "#{groupId}");
            }
-
            if (wxUser.getTags() != null) {
                VALUES("tags", "#{tags}");
            }
@@ -128,47 +118,39 @@ public class WxUserProvider {
             if (wxUser.getOpenId() != null) {
                 SET("openid = #{openId}");
             }
-
             if (wxUser.getNickName() != null) {
                 SET("nickname = #{nickName}");
             }
             if (wxUser.getSexDesc() != null) {
                 SET("sexdesc = #{sexDesc}");
             }
-
             if (wxUser.getSex() != -1) {
                 SET("sex = #{sex}");
             }
-
             if (wxUser.getLanguage() != null) {
                 SET("language = #{language}");
             }
-
             if (wxUser.getCity() != null) {
                 SET("city = #{city}");
             }
             if (wxUser.getProvince() != null) {
                 SET("province = #{province}");
             }
-
             if (wxUser.getContury() != null) {
                 SET("contury = #{contury}");
             }
             if (wxUser.getHeadImgUrl() != null) {
                 SET("headimgurl = #{headImgUrl}");
             }
-
             if (wxUser.getSubscribeTime() != null) {
                 SET("subscribetime = #{subscribeTime}");
             }
-
             if (wxUser.getRemark() != null) {
                 SET("remark = #{remark}");
             }
             if (wxUser.getGroupId() != -1) {
                 SET("groupid = #{groupId}");
             }
-
             if (wxUser.getTags() != null) {
                 SET("tags = #{tags}");
             }

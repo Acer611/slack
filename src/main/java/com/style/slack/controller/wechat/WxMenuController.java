@@ -1,5 +1,6 @@
 package com.style.slack.controller.wechat;
 
+import io.swagger.annotations.Api;
 import me.chanjar.weixin.common.bean.menu.WxMenu;
 import me.chanjar.weixin.common.bean.menu.WxMenuButton;
 import me.chanjar.weixin.common.error.WxErrorException;
@@ -20,6 +21,7 @@ import static me.chanjar.weixin.common.api.WxConsts.MenuButtonType;
  *
  * @author Binary Wang(https://github.com/binarywang)
  */
+@Api(tags = "微信菜单接口")
 @RestController
 @RequestMapping("/wechat/menu")
 public class WxMenuController implements WxMpMenuService {

@@ -1,6 +1,7 @@
 package com.style.slack.controller.wechat;
 
 import com.style.slack.wechat.service.WeixinService;
+import io.swagger.annotations.Api;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
 import org.apache.commons.lang3.StringUtils;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * @author Binary Wang
  */
+@Api(tags = "微信请求的入口")
 @RestController
 @RequestMapping("/wechat/portal")
 public class WxMpPortalController {
