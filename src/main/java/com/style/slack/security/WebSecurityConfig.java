@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.sessionCreationPolicy(SessionCreationPolicy.STATELESS); // 调整为让 Spring Security 不创建和使用 session
 
        /* http.authorizeRequests()
-         .antMatchers("/wechat/**").hasAuthority("ROLE_WX_USER")
+         .antMatchers("/wx/**").hasAuthority("ROLE_WX_USER")
                 .anyRequest().authenticated()
                 //.anyRequest().fullyAuthenticated()
                 .and()
@@ -79,7 +79,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers("/portal/**", "/order/**", "/shareurl/**", "/error", "/auth_error", "/login_page", "/tools/**", "/swagger-ui.html","/**/*.txt");
+                .antMatchers("/user/**", "/role/**", "/webjars/**", "/error", "/auth_error", "/login_page", "/tools/**", "/**/*.html","/**/*.txt");
     }
 
 

@@ -1,31 +1,23 @@
-package com.style.slack.model.po;
+package com.style.slack.model.vo.response;
 
+import com.style.slack.model.po.Role;
+import com.style.slack.model.vo.CommonResponse;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.data.annotation.Id;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 /**
- * 用户实体信息
- * Created by Gaofei on 2018/6/11.
+ *
  */
+public class UserResponse extends CommonResponse {
 
 
-public class User implements Serializable {
-
-
-
-    @Id
     @ApiModelProperty(value = "用户Id", required=true)
-    private String id ;
+    private Long id;
 
     @ApiModelProperty(value = "用户名称", required=true)
     private String userName;
-
-    @ApiModelProperty(value = "用户密码", required=true)
-    private String password;
 
     @ApiModelProperty(value = "用户昵称", required=false)
     private String nickName;
@@ -51,16 +43,13 @@ public class User implements Serializable {
     @ApiModelProperty(hidden=true)
     private Date updateTime;
 
-    @ApiModelProperty(hidden=true)
-    private int delFlag;
-
     private List<Role> roleList;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -70,14 +59,6 @@ public class User implements Serializable {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getNickName() {
@@ -142,14 +123,6 @@ public class User implements Serializable {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public int getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(int delFlag) {
-        this.delFlag = delFlag;
     }
 
     public List<Role> getRoleList() {

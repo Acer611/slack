@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!--<mapper namespace="com.style.slack.dao.role.RoleDao">
+<mapper namespace="com.style.slack.dao.role.RoleDao">
 
-    <resultMap type="com.style.slack.model.po.Role" id="RoleResult">
+    <resultMap type="Role" id="RoleInfoResult">
         <id 	column="id" property="id"/>
         <result column="role" property="role"/>
         <result column="desc" property="desc"/>
@@ -17,4 +17,4 @@
     </resultMap>
 
 
-</mapper>-->
+</mapper>

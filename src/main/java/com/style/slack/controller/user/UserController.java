@@ -125,7 +125,7 @@ public class UserController {
      * @param id 用户ID
      * @return
      */
-    @ApiOperation(value="TestQuery")
+ /*   @ApiOperation(value="TestQuery")
     @ResponseBody
     @GetMapping("/testQuery")
     public List<Map<String,Object>> testQuery(@ApiParam(value="用户Id") @RequestParam String id, HttpServletRequest request) {
@@ -134,7 +134,7 @@ public class UserController {
 
         return userService.testQuery(id);
 
-    }
+    }*/
 
 
 

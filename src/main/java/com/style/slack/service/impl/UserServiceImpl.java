@@ -5,6 +5,8 @@ import com.github.pagehelper.PageInfo;
 import com.style.slack.dao.user.UserDao;
 import com.style.slack.model.po.User;
 import com.style.slack.model.po.UserInfo;
+import com.style.slack.model.vo.request.UserRequest;
+import com.style.slack.model.vo.response.UserResponse;
 import com.style.slack.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -160,6 +162,7 @@ public class UserServiceImpl implements IUserService {
         if(null == user){
             user = userDao.getUserById(id);
         }
+        UserResponse userResponse = new UserResponse();
         return user;
     }
 

@@ -29,7 +29,7 @@ public interface RoleDao {
             @Result(property="updateTime",column="update_time"),
             @Result(property="delFlag",column="del_flag")
     })
-    //@ResultMap("RoleResult")
+    //@ResultMap("RoleInfoResult")
     public List<Role> selectRoles();
 
 
