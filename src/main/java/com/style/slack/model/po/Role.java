@@ -14,7 +14,7 @@ import java.util.Date;
 public class Role implements Serializable {
 
     @Id
-    @ApiModelProperty(value = "用户Id", required=true)
+    @ApiModelProperty(value = "用户Id", hidden=true)
     private Long id;
     @ApiModelProperty(value = "角色名")
     private String role;
@@ -22,11 +22,11 @@ public class Role implements Serializable {
     private String desc;
     @ApiModelProperty(value = "角色分类")
     private String category;
-    @ApiModelProperty(value = "创建时间")
+    @ApiModelProperty(value = "创建时间",hidden=true)
     private Date createTime;
-    @ApiModelProperty(value = "修改时间")
+    @ApiModelProperty(value = "修改时间",hidden=true)
     private Date updateTime;
-    @ApiModelProperty(value = "是否删除的标识")
+    @ApiModelProperty(value = "是否删除的标识",hidden=true)
     private String delFlag;
 
     public Long getId() {

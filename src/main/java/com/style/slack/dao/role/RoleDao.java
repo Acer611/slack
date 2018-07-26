@@ -48,4 +48,12 @@ public interface RoleDao {
             @Result(property="delFlag",column="del_flag")
     })
     public Role queryRoleById(HashMap paraMap);
+
+    /**
+     * 添加角色信息
+     * @param role
+     * @return
+     */
+    @InsertProvider(type=RoleSQLProvider.class,method="insertRole")
+    void insertRole(Role role);
 }

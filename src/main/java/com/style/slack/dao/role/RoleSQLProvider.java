@@ -1,5 +1,6 @@
 package com.style.slack.dao.role;
 
+import com.style.slack.model.po.Role;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.util.StringUtils;
 
@@ -26,4 +27,30 @@ public class RoleSQLProvider {
             }
         }}.toString();
     }
+
+    public String insertRole(Role role){
+        return new SQL() {{
+            INSERT_INTO("t_role");
+
+            if (role.getRole() != null) {
+                VALUES("role", "#{role}");
+            }
+
+            if (role.getDesc() != null) {
+                VALUES("`desc`", "#{desc}");
+            }
+            if (role.getCategory() != null) {
+                VALUES("category", "#{category}");
+            }
+
+            if (role.getCreateTime() != null) {
+                VALUES("create_time", "#{createTime}");
+            }
+            if (role.getDelFlag() != null) {
+                VALUES("del_flag", "#{delFlag}");
+            }
+        }}.toString();
+    }
+
+
 }

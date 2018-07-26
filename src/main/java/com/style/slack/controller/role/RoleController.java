@@ -5,6 +5,7 @@ import com.style.slack.model.po.Role;
 import com.style.slack.service.IRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,7 @@ public class RoleController {
     @ApiOperation(value="根据角色ID查询角色信息")
     @ResponseBody
     @GetMapping("/queryById")
-    public Role findRoleById(@RequestParam(name = "角色ID" ,required = true) int id,HttpServletRequest request){
+    public Role findRoleById(  @ApiParam(value="角色ID")@RequestParam(name = "角色ID" ,required = true) int id,HttpServletRequest request){
         logger.info("根据角色ID查询角色信息......");
        Role role = roleService.queryRoleById(id);
        return role;
@@ -57,7 +58,7 @@ public class RoleController {
     @ApiOperation(value = "添加角色信息")
     @ResponseBody
     @PostMapping("addRole")
-    public Role addRole(@RequestParam(name = "角色信息" ) Role role,HttpServletRequest request){
+    public Role addRole(@ApiParam(value="角色信息")@RequestBody Role role,HttpServletRequest request){
         logger.info("添加角色信息......角色名为 ：" + role.getRole());
         role = roleService.addRoleInfo(role);
         return  role;
