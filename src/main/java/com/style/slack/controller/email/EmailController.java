@@ -1,16 +1,22 @@
 package com.style.slack.controller.email;
 
 
+import com.style.slack.common.utils.EmailUtil;
 import com.style.slack.service.IEmailService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Api(tags="邮件发送")
 @Controller
@@ -28,12 +34,20 @@ public class EmailController {
      */
     @ApiOperation(value="测试邮件发送", notes="getEntityById")
     @ResponseBody
-    @RequestMapping(value = "/getTestDemoEmail", method = RequestMethod.GET)
-    public  void getEntityById() throws Exception {
-        String sendTo = "354941218@qq.com";
-        String titel = "测试邮件标题";
-        String content = "测试邮件内容";
-        emailService.sendSimpleMail(sendTo, titel, content);
+    @RequestMapping(value = "/sendEmail", method = RequestMethod.GET)
+    public  String sendEmail(@ApiParam(value = "收件人" ,required = true) @RequestParam(name="toUser") String toUser) throws Exception {
+        //检验toUser邮件格式是否正确
+        if(EmailUtil.emailFormat(toUser)){
+            String titel = "测试邮件标题";
+            String content = "测试邮件内容";
+            emailService.sendSimpleMail(toUser, titel, content);
+            return  "邮件已发送给 ："+ toUser;
+        }else{
+            return  "输入邮件格式有误";
+        }
 
     }
+
+
+
 }
