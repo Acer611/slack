@@ -36,9 +36,9 @@ public class RoleController {
     @ResponseBody
     @GetMapping("/all")
     public PageInfo<Role> findAllRole(
-            @RequestParam(name = "pageNum", required = false, defaultValue = "1")
+            @ApiParam(value="页数") @RequestParam(name = "pageNum", required = false, defaultValue = "1")
                     int pageNum,
-            @RequestParam(name = "pageSize", required = false, defaultValue = "10")
+            @ApiParam(value="展示个数")@RequestParam(name = "pageSize", required = false, defaultValue = "10")
                     int pageSize, HttpServletRequest request){
         HttpSession session = request.getSession();
         System.out.println("********************Session : " + session.getId());

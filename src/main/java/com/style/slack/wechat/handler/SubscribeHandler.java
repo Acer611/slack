@@ -1,5 +1,6 @@
 package com.style.slack.wechat.handler;
 
+import com.style.slack.service.IWxTemplateService;
 import com.style.slack.service.IWxUserService;
 import com.style.slack.wechat.builder.TextBuilder;
 import com.style.slack.wechat.service.WeixinService;
@@ -27,6 +28,9 @@ public class SubscribeHandler extends AbstractHandler {
 
     @Autowired
     private IWxUserService wxUserService;
+
+    @Autowired
+    private IWxTemplateService wxTemplateService;
 
   @Override
   public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage, Map<String, Object> context, WxMpService wxMpService,
@@ -73,16 +77,18 @@ public class SubscribeHandler extends AbstractHandler {
 
       //发送客服消息
       weixinService.getKefuService().sendKefuMessage(wxkefuMessage);
+      //发送模板消息
+      wxTemplateService.sendTestTemplate(userWxInfo.getNickname(),userWxInfo.getOpenId());
 
     if (responseResult != null) {
       return responseResult;
     }
 
-    try {
+  /*  try {
       return new TextBuilder().build("感谢关注", wxMessage, weixinService);
     } catch (Exception e) {
       this.logger.error(e.getMessage(), e);
-    }
+    }*/
 
     return null;
   }

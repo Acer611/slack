@@ -1,6 +1,8 @@
 package com.style.slack.service.impl;
 
 import com.style.slack.common.constant.WxConstant;
+import com.style.slack.common.utils.DrawPictureUtil;
+import com.style.slack.common.utils.FileDownloadUtil;
 import com.style.slack.common.utils.UUIDUtil;
 import com.style.slack.dao.wxuser.WxUserDao;
 import com.style.slack.model.po.WxUser;
@@ -14,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -181,6 +184,17 @@ public class WxUserServiceImpl implements IWxUserService {
         }else{
             wxUser.setTicket(WxConstant.TICKET_URL + wxUser.getTicket());
         }
+        try{
+            //生成个性二维码
+            FileDownloadUtil.downLoadFromUrl(wxUser.getTicketUrl(),"myPicture","E:\\myimage");
+            File file = new File("E:\\myimage\\myPicture");
+            File newPicture = DrawPictureUtil.changePic(wxUser.getNickName(),wxUser.getHeadImgUrl(),file);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
 
     return wxUser.getTicketUrl();
 
