@@ -7,6 +7,7 @@ import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,6 +19,7 @@ public class WxTemplateServiceImpl implements IWxTemplateService {
 
     @Autowired
     private WeixinService weixinService;
+
 
     @Override
     public void sendTestTemplate(String nickName,String toUser) {
@@ -40,19 +42,29 @@ public class WxTemplateServiceImpl implements IWxTemplateService {
 
 
 
-    public static void main(String[]args){
+    public static void main(String[]args) throws InterruptedException {
+        long currTime = System.currentTimeMillis();
+        System.out.println("*************start******"+ currTime);
         String content = "<span style=\"-webkit-text-size-adjust: auto; background-color: rgba(255, 255, 255, 0);\">如果你的字：横不横，竖不竖<br />并且有一个想写得一手好字的愿望<br />这就是为你准备的＂零基础＂书法＂小白＂必修课</span>\n" +
                 "<div><span style=\"-webkit-text-size-adjust: auto; background-color: rgba(255, 255, 255, 0);\">备注:课程计划更新10节<br /></span>\n" +
                 "</div>";
         System.out.println(content);
         content = delHtmlTag(content);
         System.out.println(content);
+        Thread.sleep(3000L);
+        Long endTime = System.currentTimeMillis();
+        System.out.println("*************END******"+ endTime);
 
+        System.out.println("---------------耗时："+(endTime-currTime));
+        if((endTime-currTime)>3000L){
+            System.out.println("1111111111111111111111111");
+        }
        /* //去除标签
         if(entity.containsKey("intro") && null!=entity.get("intro")){
             entity.put("intro",DelHtmlTagUtil.delHtmlTag(entity.get("intro").toString()));
         }*/
     }
+
 
     /**
      * 去除html标签

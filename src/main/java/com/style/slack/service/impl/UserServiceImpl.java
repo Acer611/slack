@@ -174,7 +174,12 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User queryUserById(String id) {
         User userInfo = userDao.queryUserByUserId(id);
+        operationRedis();
         return userInfo;
+    }
+
+    private   void operationRedis(){
+        redisTemplate.opsForList().leftPush("mini_qr","1");
     }
 
     /**

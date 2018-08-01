@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -119,6 +120,9 @@ public class UserController {
         return userService.queryUserById(id);
 
     }
+
+
+
 
     /**
      * 根据用户Id查询用户信息
