@@ -2,6 +2,7 @@ package com.style.slack.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.style.slack.common.utils.SendSMSUtil;
 import com.style.slack.dao.user.UserDao;
 import com.style.slack.model.po.User;
 import com.style.slack.model.po.UserInfo;
@@ -10,6 +11,7 @@ import com.style.slack.model.vo.response.UserResponse;
 import com.style.slack.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -20,10 +22,7 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * 用户service层实现类
@@ -45,6 +44,11 @@ public class UserServiceImpl implements IUserService {
     //Redis进行存储时 value 若也为sring 推荐使用StringRedisTemplate
     @Autowired
     StringRedisTemplate stringRedisTemplate;
+
+    //rabbitMQ
+    @Autowired
+    private AmqpTemplate amqpTemplate;
+
 
     @Transactional
     @Override
@@ -76,7 +80,7 @@ public class UserServiceImpl implements IUserService {
         //stringRedisTemplate.opsForValue().set("bbb","123");
 
         //TODO 防止重复提交 细节逻辑待完善
-         boolean flag = avoidReSumbit("zzzz",result);
+        boolean flag = avoidReSumbit("zzzz",result);
         PageInfo resObj = new PageInfo();
         if(!flag){
             resObj = (PageInfo) redisTemplate.opsForValue().get("zzzz");
@@ -174,12 +178,25 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User queryUserById(String id) {
         User userInfo = userDao.queryUserByUserId(id);
-        operationRedis();
+        //operationRedis();
+       // redisTemplate.opsForHash().delete("userMap","age");
+       // redisTemplate.opsForHash().put("userMap","age",20L);
+       //redisTemplate.opsForHash().increment("userMap","age",2);
+        redisTemplate.opsForZSet().add("zset","zset001",1.0);
+        redisTemplate.opsForZSet().add("zset","zset002",2.0);
+        redisTemplate.opsForZSet().add("zset","zset003",0.0);
+
+        System.out.println(redisTemplate.opsForZSet().rangeByScore("zset",0,3));
+
+
         return userInfo;
     }
 
     private   void operationRedis(){
-        redisTemplate.opsForList().leftPush("mini_qr","1");
+        //redisTemplate.opsForList().leftPush("mini_qr","1");
+        redisTemplate.opsForHash().put("userMap","name","张三");
+        redisTemplate.opsForHash().put("userMap","sex","男");
+        redisTemplate.opsForHash().put("userMap","age","18");
     }
 
     /**
@@ -190,5 +207,27 @@ public class UserServiceImpl implements IUserService {
     @Override
     public List<Map<String, Object>> testQuery(String id) {
         return userDao.testQuery(id);
+    }
+
+    /**
+     * 发送短信验证码
+     * @param phone
+     * @return
+     */
+    @Override
+    public String sendCode(String phone) {
+       // int code = SendSMSUtil.qqSendSMS(phone,null);
+        int code = 1520;
+        if(code ==0){
+            return  "发送短信验证码有误";
+        }else{
+            Map messageMap = new HashMap();
+            messageMap.put("phone",phone);
+            messageMap.put("code",code);
+            //把短信验证码和手机号放入message的队列中
+            amqpTemplate.convertAndSend("message",messageMap);
+            return "短信发送成功";
+
+        }
     }
 }

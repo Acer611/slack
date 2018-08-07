@@ -66,4 +66,11 @@ public interface IUserService {
     User queryUserById(String id);
 
     List<Map<String,Object>> testQuery(String id);
+
+    /**
+     * 发送手机短信验证码
+     * @param phone
+     * @return
+     */
+    String sendCode(String phone);
 }

@@ -172,4 +172,22 @@ public class UserController {
 
 
 
+    /**
+     * 发送手机短信验证码
+     * @param phone
+     * @return
+     */
+    @ApiOperation(value="发送手机短信验证码")
+    @ResponseBody
+    @PostMapping("/sendCode")
+    public String sendCode(String phone){
+
+        if(StringUtils.isEmpty(phone)){
+            return "请输入手机号！";
+        }
+
+        return userService.sendCode(phone);
+    }
+
+
 }

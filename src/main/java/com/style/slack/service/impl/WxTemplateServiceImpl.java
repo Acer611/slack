@@ -59,6 +59,9 @@ public class WxTemplateServiceImpl implements IWxTemplateService {
         if((endTime-currTime)>3000L){
             System.out.println("1111111111111111111111111");
         }
+
+        System.out.println((int)((Math.random()*9+1)*1000));
+
        /* //去除标签
         if(entity.containsKey("intro") && null!=entity.get("intro")){
             entity.put("intro",DelHtmlTagUtil.delHtmlTag(entity.get("intro").toString()));
