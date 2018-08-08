@@ -216,8 +216,8 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public String sendCode(String phone) {
-       // int code = SendSMSUtil.qqSendSMS(phone,null);
-        int code = 1520;
+        int code = SendSMSUtil.qqSendSMS(phone,null);
+        //int code = 1520;
         if(code ==0){
             return  "发送短信验证码有误";
         }else{

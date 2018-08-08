@@ -78,7 +78,7 @@ dependencies {
     // 腾讯短信sdk依赖
     compile group: 'com.github.qcloudsms', name: 'qcloudsms', version: '1.0.5'
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.0.3.RELEASE'
+    //compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.0.3.RELEASE'
 
     // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-stream
     compile group: 'org.springframework.cloud', name: 'spring-cloud-stream', version: '2.0.0.RELEASE'

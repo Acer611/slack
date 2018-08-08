@@ -43,7 +43,12 @@ public class SendSMSUtil {
     String smsSign = "一抹夕阳";
 
 
-
+    /**
+     * NEXMO 发送短信验证码
+     * @param from
+     * @param toUser
+     * @param content
+     */
     public static void sendSMS(String from ,String toUser,String content){
         AuthMethod auth = new TokenAuthMethod(SMSConstant.NEXMO_API_KEY, SMSConstant.NEXMO_API_SECRET);
         NexmoClient client = new NexmoClient(auth);
