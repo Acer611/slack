@@ -11,7 +11,7 @@ this is my slack
 Build --- Gradle  
 Compiler ---JAVA 1.8   
   
- 后台技术：  
+ 后台技术：    
  
     SpringBoot2  
     HikariCP   
@@ -20,15 +20,19 @@ Compiler ---JAVA 1.8
     Spring-date-redis   
     swagger2  
     Spring-session-data-redis   
-    SpringSecurity+RabbitMQ  
+    SpringSecurity 
     Scheduled    
     spring aop  
-    使用RabbitMQ消息队列  
-    
-新加入 定时任务 Scheduled + 邮件发送 功能     
+    RabbitMQ  
+      
+      
+新加入 定时任务 Scheduled    
+邮件发送 功能     
 加入spring aop 用AOP统一处理Web请求日志  
-
-UserControll 发送手机短信验证码 使用RabbitMQ消息队列, 调用接口时把手机号和验证码放入message的队列中 作为sender(Provider)   
+使用腾讯和NEXMO的短信发送功能
+  
+UserControll 发送手机短信验证码 使用RabbitMQ消息队列,   
+调用接口时把手机号和验证码放入message的队列中 作为sender(Provider)     
 MessageReceiver 作为接受者（receiver）消费message队列中的信息
 
 
