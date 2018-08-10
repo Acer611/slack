@@ -36,11 +36,11 @@ public class SendSMSUtil {
     static final int appid = 1400118760; // 1400开头
     // 短信应用SDK AppKey
     static final String appkey = "463f1832ee7887f2ceb59f4ce410c6fc";
-
     // 短信模板ID，需要在短信应用中申请
     int templateId = 16774; // NOTE: 这里的模板ID`7839`只是一个示例，真实的模板ID需要在短信控制台中申请
     // 签名
     String smsSign = "一抹夕阳";
+
 
 
     /**

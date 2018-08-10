@@ -9,11 +9,23 @@ this is my slack
 #软件架构  
 
 Build --- Gradle  
-Compiler ---JAVA 1.8  
-SpringBoot2 + HikariCP + Mybatis + Redis + Spring-date-redis 
-+ swagger2 +Spring-session-data-redis + SpringSecurity+RabbitMQ   
+Compiler ---JAVA 1.8   
+  
+ 后台技术：  
+ 
+    SpringBoot2  
+    HikariCP   
+    Mybatis  
+    Redis   
+    Spring-date-redis   
+    swagger2  
+    Spring-session-data-redis   
+    SpringSecurity+RabbitMQ  
+    Scheduled    
+    spring aop  
+    使用RabbitMQ消息队列  
+    
 新加入 定时任务 Scheduled + 邮件发送 功能     
-
 加入spring aop 用AOP统一处理Web请求日志  
 
 UserControll 发送手机短信验证码 使用RabbitMQ消息队列, 调用接口时把手机号和验证码放入message的队列中 作为sender(Provider)   
