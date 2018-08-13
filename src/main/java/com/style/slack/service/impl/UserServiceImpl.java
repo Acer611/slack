@@ -176,8 +176,8 @@ public class UserServiceImpl implements IUserService {
      * @return
      */
     @Override
-    public UserInfo queryUserById(String id) {
-        UserInfo userInfo = userDao.queryUserByUserId(id);
+    public List<UserInfo> queryUserById(String id) {
+        List<UserInfo> userInfo = userDao.queryUserByUserId(id);
         //operationRedis();
        // redisTemplate.opsForHash().delete("userMap","age");
        // redisTemplate.opsForHash().put("userMap","age",20L);

@@ -113,7 +113,7 @@ public class UserController {
     @ApiOperation(value="根据用户ID查询用户信息(包含角色信息)")
     @ResponseBody
     @GetMapping("/queryUserById")
-    public UserInfo queryUserById(@ApiParam(value="用户Id") @RequestParam String id, HttpServletRequest request) {
+    public List<UserInfo> queryUserById(@ApiParam(value="用户Id") @RequestParam String id, HttpServletRequest request) {
         HttpSession session = request.getSession();
         System.out.println("********************Session : " + session.getId());
 

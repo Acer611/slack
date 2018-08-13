@@ -34,7 +34,7 @@
 
     <resultMap type="com.style.slack.model.po.UserInfo" id="UserResult">
         <id column="turId" property="id"/>
-        <association property="user" resultMap="user"/>
+        <collection property="user" resultMap="user"/>
         <collection property="roleList" resultMap="RoleResult"></collection>
     </resultMap>
 

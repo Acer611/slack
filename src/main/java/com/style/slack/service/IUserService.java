@@ -63,7 +63,7 @@ public interface IUserService {
      * @param id
      * @return
      */
-    UserInfo queryUserById(String id);
+    List<UserInfo> queryUserById(String id);
 
     List<Map<String,Object>> testQuery(String id);
 

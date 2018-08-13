@@ -127,7 +127,7 @@ public interface UserDao  {
      * @param id
      * @return
      */
-    public UserInfo queryUserByUserId(String id);
+    public List<UserInfo> queryUserByUserId(String id);
 
 
    @Select("select s.id,s.age,s.create_time,s.del_flag,s.email,s.head_image,s.nick_name,s.`PASSWORD`,s.phone,s.sex,s.update_time,s.user_name, " +
