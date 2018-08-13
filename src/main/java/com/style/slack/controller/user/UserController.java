@@ -83,7 +83,7 @@ public class UserController {
     @GetMapping("/findByName")
     public PageInfo<User> findUserByName(  @RequestParam(name = "pageNum", required = false, defaultValue = "1") int pageNum,
                                            @RequestParam(name = "pageSize", required = false, defaultValue = "10") int pageSize,
-                                           @ApiParam(value="用户名") @RequestParam String name) {
+                                           @ApiParam(value="用户名",required = true) @RequestParam String name) {
 
 
         return userService.findUserByName(pageNum,pageSize,name);
@@ -97,7 +97,7 @@ public class UserController {
     @ApiOperation(value="根据用户ID查询用户信息")
     @ResponseBody
     @GetMapping("/findUserById")
-    public User findUserById(@ApiParam(value="用户Id") @RequestParam String id,HttpServletRequest request) {
+    public User findUserById(@ApiParam(value="用户Id",required = true) @RequestParam String id,HttpServletRequest request) {
         HttpSession session = request.getSession();
         System.out.println("********************Session : " + session.getId());
 
@@ -113,7 +113,7 @@ public class UserController {
     @ApiOperation(value="根据用户ID查询用户信息(包含角色信息)")
     @ResponseBody
     @GetMapping("/queryUserById")
-    public User queryUserById(@ApiParam(value="用户Id") @RequestParam String id, HttpServletRequest request) {
+    public UserInfo queryUserById(@ApiParam(value="用户Id") @RequestParam String id, HttpServletRequest request) {
         HttpSession session = request.getSession();
         System.out.println("********************Session : " + session.getId());
 

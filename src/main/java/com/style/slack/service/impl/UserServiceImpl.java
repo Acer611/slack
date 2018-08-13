@@ -176,17 +176,17 @@ public class UserServiceImpl implements IUserService {
      * @return
      */
     @Override
-    public User queryUserById(String id) {
-        User userInfo = userDao.queryUserByUserId(id);
+    public UserInfo queryUserById(String id) {
+        UserInfo userInfo = userDao.queryUserByUserId(id);
         //operationRedis();
        // redisTemplate.opsForHash().delete("userMap","age");
        // redisTemplate.opsForHash().put("userMap","age",20L);
        //redisTemplate.opsForHash().increment("userMap","age",2);
-        redisTemplate.opsForZSet().add("zset","zset001",1.0);
+       /* redisTemplate.opsForZSet().add("zset","zset001",1.0);
         redisTemplate.opsForZSet().add("zset","zset002",2.0);
         redisTemplate.opsForZSet().add("zset","zset003",0.0);
 
-        System.out.println(redisTemplate.opsForZSet().rangeByScore("zset",0,3));
+        System.out.println(redisTemplate.opsForZSet().rangeByScore("zset",0,3));*/
 
 
         return userInfo;

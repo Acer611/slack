@@ -1,6 +1,7 @@
 package com.style.slack.dao.user;
 
 import com.style.slack.model.po.User;
+import com.style.slack.model.po.UserInfo;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.StatementType;
 import org.apache.ibatis.annotations.ResultMap;
@@ -11,7 +12,7 @@ import java.util.Map;
  * 用户dao层处理类
  *  Created by Gaofei on 2018/6/11.
  */
-
+@Mapper
 public interface UserDao  {
 
 
@@ -126,9 +127,7 @@ public interface UserDao  {
      * @param id
      * @return
      */
-     @SelectProvider(type=UserSQLProvider.class, method="queryUserByUserId")
-     //@ResultMap("UserResult")
-    public User queryUserByUserId(String id);
+    public UserInfo queryUserByUserId(String id);
 
 
    @Select("select s.id,s.age,s.create_time,s.del_flag,s.email,s.head_image,s.nick_name,s.`PASSWORD`,s.phone,s.sex,s.update_time,s.user_name, " +
