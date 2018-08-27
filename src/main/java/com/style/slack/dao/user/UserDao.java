@@ -36,6 +36,7 @@ public interface UserDao  {
             @Result(property="updateTime",column="update_time"),
             @Result(property="delFlag",column="del_flag")
     })
+
     public List<User> selectUsers();
 
 

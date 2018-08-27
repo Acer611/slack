@@ -190,4 +190,18 @@ public class UserController {
     }
 
 
+
+    @ApiOperation(value="我是测试")
+    @ResponseBody
+    @PostMapping("/myTest")
+    public String myTest(){
+        logger.info("this is my test");
+        return userService.test();
+    }
+
+
+
+
+
+
 }

@@ -35,7 +35,8 @@ public class SessionConfig {
     public TaskScheduler scheduledExecutorService() {
         ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
         scheduler.setPoolSize(8);
-        scheduler.setThreadNamePrefix("scheduled-thread-");
+
+        scheduler.setThreadNamePrefix("scheduled-thread-"+scheduler.getThreadNamePrefix()+"-");
         return scheduler;
     }
 }

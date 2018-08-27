@@ -73,4 +73,10 @@ public interface IUserService {
      * @return
      */
     String sendCode(String phone);
+
+    /**
+     * 这是个测试
+     * @return
+     */
+    String test();
 }
