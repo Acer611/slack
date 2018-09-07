@@ -33,7 +33,8 @@ Compiler ---JAVA 1.8
   
 UserControll 发送手机短信验证码 使用RabbitMQ消息队列,   
 调用接口时把手机号和验证码放入message的队列中 作为sender(Provider)     
-MessageReceiver 作为接受者（receiver）消费message队列中的信息
+MessageReceiver 作为接受者（receiver）消费message队列中的信息  
+添加二维码的生成工具类
 
 
 软件架构说明   

@@ -252,9 +252,21 @@ public class UserServiceImpl implements IUserService {
     }
 
 
+
+   public static int test1(int i){
+        i = i +1;
+        System.out.println(i);
+        return i;
+    }
+
+    public static String test2(String i){
+        i = i +1;
+        System.out.println(i);
+        return i;
+    }
     public  static void  main(String[] args) {
 
-        String  src = "<p>发多少防守打法的发记录点击方老师的房间卡联发科<img src=\"http://zhaojianimages.oss-cn-beijing.aliyuncs.com/userUpload/2018/08/20/1534756021987/50d10fe2fb3e4f9494e7724712c890c5.blob\" alt=\"app启动页 (1).png\"/>防守打法打算发送到发送到撒打飞机快递费老家啊是贷款分类及奥斯卡东方丽景德生科技了富士康的分离焦虑速度快放假塑料袋开发加速度快分类及收代理费克里斯打分加适量的看法讲述了开发甲方圣诞节啊快疯了就是打发可接受的分开了沙发垫就流口水发动机萨克的福利计算的快疯了js<img src=\"http://zhaojianimages.oss-cn-beijing.aliyuncs.com/userUpload/2018/08/20/1534756050630/da8264f5786b4be2b22f838e081a4cbb.blob\" alt=\"微信图片_20180712124042.jpg\"/>发是打发斯蒂芬付付付付付扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩俯拾地芥看法是的福利卡时代峻峰</p>";
+    /*    String  src = "<p>发多少防守打法的发记录点击方老师的房间卡联发科<img src=\"http://zhaojianimages.oss-cn-beijing.aliyuncs.com/userUpload/2018/08/20/1534756021987/50d10fe2fb3e4f9494e7724712c890c5.blob\" alt=\"app启动页 (1).png\"/>防守打法打算发送到发送到撒打飞机快递费老家啊是贷款分类及奥斯卡东方丽景德生科技了富士康的分离焦虑速度快放假塑料袋开发加速度快分类及收代理费克里斯打分加适量的看法讲述了开发甲方圣诞节啊快疯了就是打发可接受的分开了沙发垫就流口水发动机萨克的福利计算的快疯了js<img src=\"http://zhaojianimages.oss-cn-beijing.aliyuncs.com/userUpload/2018/08/20/1534756050630/da8264f5786b4be2b22f838e081a4cbb.blob\" alt=\"微信图片_20180712124042.jpg\"/>发是打发斯蒂芬付付付付付扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩俯拾地芥看法是的福利卡时代峻峰</p>";
         System.out.println(src);
         String src2 = src.replaceAll("&[a-zA-Z]{1,8};", " ");
         System.out.println(src2);
@@ -275,8 +287,19 @@ public class UserServiceImpl implements IUserService {
         System.out.println(a);
         System.out.println(b);
 
-        System.out.println(srartTime);
+        System.out.println(srartTime);*/
+
+    Integer a = new Integer(7);
+    test1(a);
+    System.out.println(a);
+    String b = new String();
+    b = "abc";
+    test2(b);
+    System.out.println(b);
+
+
     }
+
 
 
 

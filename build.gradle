@@ -88,6 +88,13 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat
     providedCompile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.0.2.RELEASE'
 
+    // https://mvnrepository.com/artifact/com.google.zxing/core
+    compile group: 'com.google.zxing', name: 'core', version: '3.3.3'
+    // https://mvnrepository.com/artifact/com.google.zxing/javase
+    compile group: 'com.google.zxing', name: 'javase', version: '3.3.3'
+
+
+
 
 
 
