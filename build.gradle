@@ -93,9 +93,8 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.zxing/javase
     compile group: 'com.google.zxing', name: 'javase', version: '3.3.3'
 
-
-
-
+    compile("cn.leancloud:java-sdk:0.1.6")
+    
 
 
 

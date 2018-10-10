@@ -29,7 +29,6 @@ public class WxUserController {
 
     //记录日志
     private static final Logger logger  = LoggerFactory.getLogger(WxUserController.class);
-
     @Autowired
     private IWxUserService wxUserService;
 
