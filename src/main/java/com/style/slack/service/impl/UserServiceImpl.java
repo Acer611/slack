@@ -7,7 +7,6 @@ import com.style.slack.common.utils.SendSMSUtil;
 import com.style.slack.dao.user.UserDao;
 import com.style.slack.model.po.User;
 import com.style.slack.model.po.UserInfo;
-import com.style.slack.model.vo.request.UserRequest;
 import com.style.slack.model.vo.response.UserResponse;
 import com.style.slack.service.IUserService;
 import org.slf4j.Logger;
@@ -23,6 +22,10 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -334,7 +337,7 @@ public class UserServiceImpl implements IUserService {
             // 保存成功
             AVObject todoFolder = avCloudQueryResult.getResults().get(0);
             System.out.println(todoFolder.get("words"));*/
-      /*      String objectId = "5bbd6ba0ac502e0063ecc8fd";
+            String objectId = "5bbd6ba0ac502e0063ecc8fd";
             AVQuery<AVObject> avQuery = new AVQuery<>("DataTypes");
             AVObject avObject = avQuery.get(objectId);
             System.out.println(avObject.get("testInteger"));
@@ -342,7 +345,7 @@ public class UserServiceImpl implements IUserService {
             AVObject avObject1 = AVObject.createWithoutData("DataTypes",objectId);
             avObject1.fetch();
 
-            System.out.println(avObject1.get("testDate"));*/
+            System.out.println(avObject1.get("testDate"));
 
             /*AVObject avObject = new AVObject("Account");
             avObject.put("balance",100);
@@ -420,11 +423,221 @@ public class UserServiceImpl implements IUserService {
                 }
             });*/
 
-            final AVObject avObject = AVObject.createWithoutData("Todo", "5bbda4fefb4ffe006958a167");
+            /*final AVObject avObject = AVObject.createWithoutData("Todo", "5bbda4fefb4ffe006958a167");
             AVGeoPoint point = new AVGeoPoint(39.9, 116.4);
             avObject.put("whereCreated", point);
-            avObject.save();
+            avObject.save();*/
 
+
+            //文件上传
+
+            /*AVFile file = new AVFile("resume.txt","Working with LeanCloud is great!".getBytes());
+
+            file.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(AVException e) {
+                    // 成功或失败处理...
+                }
+            }, new ProgressCallback() {
+                @Override
+                public void done(Integer integer) {
+                    // 上传进度数据，integer 介于 0 和 100。
+                    System.out.println("当前上传进度： " + integer + "%");
+                }
+            });*/
+
+
+            //文件下载
+/*
+
+            AVQuery<AVObject> query = new AVQuery<>("_File");
+            query.getInBackground("5bbea733fb4ffe00691a686c", new GetCallback<AVObject>() {
+                @Override
+                public void done(AVObject avObject, AVException e) {
+                    if (e == null) {
+
+                        System.out.println("文件找到了");
+                        AVFile file = new AVFile("test.txt", avObject.getString("url"), new HashMap<String, Object>());
+                        file.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] bytes, AVException e) {
+                                if (e == null) {
+                                    System.out.println( "文件大小" + bytes.length);
+                                } else {
+                                    System.out.println("出错了" + e.getMessage());
+                                }
+                                File downloadedFile = new File("/Users/apple" + "/test.txt");
+                                FileOutputStream fout = null;
+                                try {
+                                    fout = new FileOutputStream(downloadedFile);
+                                    fout.write(bytes);
+                                    System.out.println( "文件写入成功.");
+                                    fout.close();
+                                } catch (FileNotFoundException e1) {
+                                    e1.printStackTrace();
+                                    System.out.println("文件找不到.." + e1.getMessage());
+                                } catch (IOException e1) {
+                                    System.out.println("文件读取异常.");
+                                }
+                            }
+                        }, new ProgressCallback() {
+                            @Override
+                            public void done(Integer integer) {
+                                System.out.println("文件下载进度" + integer);
+                            }
+                        });
+
+
+                    } else {
+                        System.out.println("出错了！");
+                    }
+                }
+            });
+*/
+/*
+            AVQuery<AVObject> query = new AVQuery<>("Todo");
+            Date now = new Date();
+            query.whereLessThanOrEqualTo("createdAt", now);//查询今天之前创建的 Todo
+            query.limit(10);//
+            List<AVObject> list = query.find();
+            for (AVObject aVObject:list) {
+                System.out.println(aVObject.get("title"));
+
+            }
+          int i = query.count();
+          System.out.println("总条数为："+i);*/
+
+            //TODO 一对多查询
+           /* AVObject studentTom = new AVObject("Student");// 学生 Tom
+            studentTom.put("name", "Tom");
+
+            AVObject courseLinearAlgebra = new AVObject("Course");
+            courseLinearAlgebra.put("name", "线性代数");
+
+            AVObject studentCourseMapTom = new AVObject("StudentCourseMap");// 选课表对象
+
+            // 设置关联
+            studentCourseMapTom.put("student", studentTom);
+            studentCourseMapTom.put("course", courseLinearAlgebra);
+
+            // 设置学习周期
+            studentCourseMapTom.put("duration", Arrays.asList("2016-02-19", "2016-04-21"));
+            // 获取操作平台
+            studentCourseMapTom.put("platform", "iOS");
+
+            // 保存选课表对象
+            studentCourseMapTom.saveInBackground();
+*/
+
+           //TODO  多对多查询
+/*
+            // 微积分课程
+            AVObject courseCalculus = AVObject.createWithoutData("Course", "5bbeddf40b6160006a8a9765");
+
+            // 构建 StudentCourseMap 的查询
+            AVQuery<AVObject> query = new AVQuery<>("StudentCourseMap");
+
+            // 查询所有选择了线性代数的学生
+            query.whereEqualTo("course", courseCalculus);
+            //关键代码，不止查出学生的ID，同时查处学生的所有属性
+            query.include("student");
+
+            // 执行查询
+            query.findInBackground(new FindCallback<AVObject>() {
+                @Override
+                public void done(List<AVObject> list, AVException e) {
+                    // list 是所有 course 等于线性代数的选课对象
+                    // 然后遍历过程中可以访问每一个选课对象的 student,course,duration,platform 等属性
+                    for (AVObject studentCourseMap : list) {
+                        AVObject student = studentCourseMap.getAVObject("student");
+                        AVObject course = studentCourseMap.getAVObject("course");
+                        ArrayList duration = (ArrayList) studentCourseMap.getList("duration");
+                        String platform = studentCourseMap.getString("platform");
+                        System.out.println("name : " +student.get("name")+ "   age: "+ student.get("age"));
+                    }
+                }
+            });*/
+
+           /* AVQuery<AVObject> query = new AVQuery<>("Comment");
+            query.whereEqualTo("targetTodoFolder", AVObject.createWithoutData("TodoFolder", "5bbda55d0b6160006f89f79a"));
+
+            List<AVObject>  objectList = query.find();
+            for (AVObject ob: objectList) {
+                System.out.println(ob.get("content"));
+            }*/
+
+           /* AVObject tag = new AVObject("Tag");// 构建对象
+            tag.put("name", "今日必做");// 设置名称
+            tag.save();*/
+
+           //TODO Relation 关系存储
+
+           /* AVObject tag1 = new AVObject("Tag");// 构建对象
+            tag1.put("name", "今日必做");// 设置 Tag 名称
+
+            AVObject tag2 = new AVObject("Tag");// 构建对象
+            tag2.put("name", "老婆吩咐");// 设置 Tag 名称
+
+            AVObject tag3 = new AVObject("Tag");// 构建对象
+            tag3.put("name", "十分重要");// 设置 Tag 名称
+
+            AVObject todoFolder = new AVObject("TodoFolder");// 构建对象
+            todoFolder.put("name", "家庭");// 设置 Todo 名称
+            todoFolder.put("priority", 1);// 设置优先级
+
+            AVRelation<AVObject> relation = todoFolder.getRelation("tags");
+            relation.add(tag1);
+            relation.add(tag2);
+            relation.add(tag3);
+
+            todoFolder.save();// 保存到云端*/
+
+
+           //TODO CQL inster
+           // AVCloudQueryResult avCloudQueryResult = AVQuery.doCloudQuery("insert into GameScore(player, score) values(pointer('Player','player objectId'), 100)");
+            //多行插入
+            String cql = "insert into Player(name, age) values ('LeanCloud', 2), ('美味书签', 3)" ;
+
+            //修改
+            String updateSQL = "update GameScore set score=90, name='leancloud' where objectId='5bbefdb39f5454007018c60c'";
+
+            //TODO 添加relation关系
+            String relationSQL = "update TodoFolder set tags=op('AddRelation', {'objects': [pointer('ag','5bbee9a39f5454007017a249')]}) where objectId='5bbda55d0b6160006f89f79a'";
+            //AVCloudQueryResult avCloudQueryResult = AVQuery.doCloudQuery(relationSQL);
+            /*AVObject todoFolder = AVObject.createWithoutData("TodoFolder", "5bbda55d0b6160006f89f79a");
+            AVRelation<AVObject> relation = todoFolder.getRelation("tags");
+            AVQuery<AVObject> query = relation.getQuery();
+            List<AVObject> list = query.find();
+            for (AVObject avobject:list
+                 ) {
+                System.out.println(avobject.get("name"));
+
+            }*/
+
+           /* AVUser user = new AVUser();// 新建 AVUser 对象实例
+            user.setUsername("Tom");// 设置用户名
+            user.setPassword("cat!@#123");// 设置密码
+            user.setEmail("tom@leancloud.cn");// 设置邮箱
+            user.signUp();*/
+
+
+
+
+
+            //TODO TODO TODO  获取杂志的阅读量 首先要现货区杂志的ObjectId 也就是Store的ID
+            String resourceSQL = "select * from ResourceList where  publisher=pointer('Store','5a02b94b9545040061011820') limit 500";
+            AVCloudQueryResult avCloudQueryResult = AVQuery.doCloudQuery(resourceSQL);
+            AVObject resourceList = avCloudQueryResult.getResults().get(0);
+            System.out.println("。。。。。。。"+resourceList.get("visitCount"));
+
+            List<AVObject> avList = (List<AVObject>) avCloudQueryResult.getResults();
+            long count = 0;
+            for (AVObject ob:avList) {
+                count = count + ob.getInt("visitCount");
+                System.out.println(ob.get("visitCount"));
+            }
+
+            System.out.println("**********总数："+ count);
 
         } catch (Exception e) {
             /*if (e != null) {
